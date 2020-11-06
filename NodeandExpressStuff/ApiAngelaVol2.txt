@@ -1,0 +1,204 @@
+*)
+  You can download multiple modules in the cmd by separating them by a space...
+
+ex: npm install body-parser express request
+
+
+*)
+  The request module is by far the most popular (non-standard) Node package for making HTTP requests.
+
+It makes it easier to make http request than normal http requests....
+
+*)
+  you can copy bootstrap templates example, just go to the site
+  then go to examples, then pick one and click on view page source and paste it in your html
+
+NOTE: lama tsewe copy paste lal html, bdk thot el cdn link lal bootstrap w bdk kamena thot el style bdk te2ra custom stylesheet....
+
+*)
+  eza bdk shaghle bas men tahet te3la w men fo2 teb2a fixed bma7alla you use: margin-bottom:-1px;
+*)
+  border-radius: # # # #
+1st num lal top left
+2nd lal top right
+3rd bottom right
+4th bottom left
+*************************************************************************************************************************************************
+*)
+ in order to your server in express to have static files(local files) like css or images:
+
+1: put them in a folder inside the dir of your project, put the images and css stylesheet
+
+2:put them again inside of a folder...(kel shi bas bikoun already juwet a folder)
+
+3:app.use(express.static("(name of folder that has css and images and their folders"));
+
+4:change the href and src for link and images in html, relative to their location now and u are all set! but do not mention their grandfather folder!
+ex: fold:public    // mention him in app.use(express.static(...))
+        fold:css
+            file:style.css
+                href="css/style.css"   // like that
+*************************************************************************************************************************************************
+
+*)
+  you can console.log many variables this way:
+   console.log(firstName,lastName,email);
+
+*)
+  amazing font: pastel contrast (rainglow)
+
+
+*************************************************************************************************************************************************
+SIMPLE WAY TO UNDERSTAND for action w post: 1: am neb3at el data 3al server of that specific route mhadado bel action (bikuno requested bel                                                                                                                        server)
+                                            2: el post method shaghleta tlemon men hounik w to store them ( w fiya teb3at specific response ba3d                                                                                                             ma testelemon)
+*************************************************************************************************************************************************
+
+
+MAILCHIMP API is used to store emails and keep tracks of them, hek eza u wanna send them all an email later on using your app aw shi
+
+w betshuf who subscribed to ur newsletter aw app business aw shi w bteb3atlon kelon message w hek
+
+*************************************************************************************************************************************************
+
+To use mailchimp api:
+1: sign up for a free account 3ndon (nadershbib pass:main+mainpin+!)
+2: click on account , extras and get ur api key (a4c872df32857fb12e5eecb61847b74f-us17)
+3:Go to reference,List audiences to see how it is used
+4:go to audiences, manage audiences, settings, and get the id  (list id:6e4ca868b6)
+5:go back to main page, and press get started to see how to use it
+6:KAFFEEEE men 3nd angela lol
+7: 3mol data object, fiyo correct properties (bdk tshufon mnel reference of list and audiences)
+8: hawela la a json string format
+9: copy the api key now from their example
+
+10:const url="https://usX.api.mailchimp.com/3.0/lists"
+11:add list id at the end of url /6e4ca868b6
+12: now do u see in ur api key (us17) place the number (17) instead of the(X) in your url
+
+so bisir hek :      const url="https://us17.api.mailchimp.com/3.0/lists/6e4ca868b6";
+
+13:
+
+************************************************************************************************************************************************
+
+ var data = {
+         members:[
+             {
+                 email_address:email,
+                 
+
+              
+
+
+
+
+
+             }
+         ]
+     }
+
+Hyda el shi awal shi 3nde object, jouwet hal object 3nde property name w it's property value hiye array of object or fik tshufa as array of properties
+*************************************************************************************************************************************************
+
+https.request(url,options,callback function)
+
+el options bethadid el method( get,post,....)
+el url(api)
+callback function (request,response)
+
+ex from the app:
+
+const url="https://us17.api.mailchimp.com/3.0/lists/6e4ca868b6";
+     const options = {
+         method:'POST',
+         auth:"nader1:a4c872df32857fb12e5eecb61847b74f-us17"      // this part la2an hene hadadoule, bel mailchimp
+     }
+     https.request(url,option,(response)=>{
+
+
+
+
+     });
+
+auth property: allows us to perform basic athentication, checking or verifying the identity of the user!
+
+************************************************************************************************************************************************
+
+To send data you have to a server, for example if you got data from form input and you wanna send them to a server:
+
+1: bdk tkhazin el request li ha teb3ata bi variable:
+ const request = https.request(url,option,(response)=>{
+
+          console.log(JSON.parse(data));
+     });
+
+el url: bihadid wen bdk teb3at el informations
+el option: bethadid enno el method hiye 'post', enno we are sending something to a server aka(creating a new ressource)
+el response is a parametre 3ade la anonymous function could be useful sometimes
+
+
+2: el data li bdk teb3ata badk teb3ata as a JSON string format, so eza hiye as an object hawella la a json string format using JSON.stringify
+
+3: (name of variable who is holding the request).write(variable li holding el data li bdk teb3ata as JSON string format)
+    (name of variable holding request).end(); // telling it that we are done mainly
+
+full example:
+
+console.log(firstName,lastName,email);
+PART 1:
+
+     var data = {
+         members:[
+             {
+                 email_address:email,
+                 status:"subscribed",
+                 merge_fields:{
+                     FNAME:firstName,
+                     LNAME: lastName
+                 }
+
+              
+
+
+
+
+
+             }
+         ]
+     }
+
+   PART 2:  var JSONdata = JSON.stringify(data);
+
+ PART 3:    const url="https://us17.api.mailchimp.com/3.0/lists/6e4ca868b6";
+     const options = {
+         method:'POST',
+         auth:"nader1:a4c872df32857fb12e5eecb61847b74f-us17"
+     }
+ PART 4:    const request = https.request(url,option,(response)=>{
+
+          console.log(JSON.parse(data));
+     });
+
+ PART 5:    request.write(JSONdata);
+     request.end();
+
+
+
+
+
+
+
+part 1 so we are basically creating the js object
+part 2 converting js object to a json string format so we can send it to the server
+part 3 defining wen bade eb3at hal data 3a ayya url , w defining enna post method
+part 4 creating the request enne eb3at hal data to the sepecific url
+part 5  sending them finally to the server!
+
+
+NOTE: ma tensa testaamil const request=require("request"); tate2dar testaamil https.request w to send the data to the server!!!!!!!!!!
+*************************************************************************************************************************************************
+
+
+
+
+

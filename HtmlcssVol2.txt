@@ -1,0 +1,153 @@
+*)
+   animation: shadow 5s infinite;
+/* animation-direction: alternate; */
+
+}
+@keyframes shadow{
+
+50%{
+    text-shadow: 5px 10px 20px blue;
+}
+
+
+
+    IMPORTANT TIPPP:: eza 3atet animation duration, then bel keyframes ma hadadet 3al 100% shu bdk tshuf, kel ltime lbe2e li mahadadto bisir
+                      dedicated 3a enna terja3 to it's original place...
+
+                  example: animation-duration:6s
+                           @keyframes{50%{....}} // expecting to see at 50% of 6s(3s) while gradually increasing from 0s the properties I set.
+                            
+                                              //Now be2ela el animation 3s, shu betsewe hon? since enta mahadadet la2an el final keyframe at
+                                               100% shu ysir....
+                                               So simply hone mainly, btekhod kel hal time li be2ela taterja3 fiyon to it's original state abel
+                                               el animation...
+
+
+
+
+Bear in mind that you could do it manually using animation-direction, hek enta btethakam 3al add bel raw7a w el raj3a adeh badon ykuno...
+animation-direction:alternate;...
+animation-duration:6s;
+
+@keyframes{100%{...}}     // walla khod 3s tashuf el animation properties li hateton, then khod 2 s taterja3 ma7alak to ur original position
+                            since hatit animation direction....
+*************************************************************************************************************************************************
+
+*)
+    el button w el input elements, henne inline elements, lama thot buttons aw inputs byejo wara Ba3ed
+
+
+*)
+   The :checked pseudo-class in CSS selects elements when they are in the selected state. It is only associated with input (<input>) elements of type radio and checkbox 
+
+
+*)
+    to style an input checkbox, eza normally you can not, fa bdk testaamil property: -webkit-appearance:none;   // betkhalik tsewe style lal checkbox, bas bisir bdk tsewe styling la kel shi w enak enta thot el right mark....  
+
+
+tathot el checking mark, bdk el input checkbox tkoun position relative, then baadena bdk testaamil el chekced pseudo class then el active pseudo element :
+
+w bethot: 
+.regular-checkbox:checked:after {
+	content: '\2714';
+	font-size: 14px;
+	position: absolute;
+	top: 0px;
+	left: 3px;
+	color: #75e908;
+}
+*************************************************************************************************************************************************
+
+
+*)
+    eza bdk tsewe questionnaire, bdk testaamil <input type="radio" /> 
+    fik thot kaza wehde, wara ba3ed w they are going to be treated as a group, yaane mafi ykouno tnen checked
+    as lezim mainly ykoun 3andon same value for the attribute name.... name="gender" 
+                                                                       name="gender"
+
+
+*)
+    
+  to put background moving wallpaper:
+
+
+      1: div container, inside it a video of type mp4....
+     
+       
+<div class="background-wrap">
+       <video id="video" preload="auto" autoplay="true" loop="loop" muted="muted">
+           <source src="y2mate.com - 4K Real (!!!) 2 Million Stars ⭐ 3D Space Travel ⭐ Colorful Galaxy Moving Background _ AA-vfx_zkpne12XUxw_1080p.mp4" type="video/mp4">
+            video not supported
+  
+
+       </video>
+ 
+
+
+
+</div>
+
+styling:
+
+
+.background-wrap{
+position: fixed;
+z-index: -1000;
+width: 100%;
+height: 100%;
+overflow: hidden;
+top: 0;
+left: 0;
+
+
+}
+#video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+NOTE: sometimes the video might not work, so go the editor video app you have and trim the video and put the codec of the video H264/mp4!!!
+   
+    tatkhale el background video ydal meshe law el user kabas randomly 3al video simply: in the styling lal video element use:
+    pointers-events:none;
+
+
+***************************************************************************************************************************************************
+
+
+
+               
+*)
+    code to make 3d text:
+
+color: #9c1010;
+    text-shadow: 0 1px 0 #999999, 0 2px 0 #888888, 0 3px 0 #777777, 0 4px 0 #666666, 0 5px 0 #555555, 0 6px 0 #444444, 0 7px 0 #333333, 0 8px 7px rgba(0, 0, 0, 0.4), 0 9px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+el idea simple,kel mara 3al vertical parametre mnel text shadow am naate color, ekhir shi 3al 8 w el 9 btaate blur effect tatdawe w tbayin!!!
+
+
+
+*)
+   Mont serrat font is the best font when dealing with numbers......
+
+*)
+   always when using media queries el ordre badk ykun mnel kbir lal zghir, wa ella they will override each other....
+
+*)
+    
+ to disable on double tap zoom in, specially on phones and tablets use:
+ *{
+      touch-action:manipulation;
+    
+  }
+
+
+
+
+

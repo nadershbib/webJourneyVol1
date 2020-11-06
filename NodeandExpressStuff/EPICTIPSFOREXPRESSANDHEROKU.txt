@@ -1,0 +1,188 @@
+Express:
+
+definition of basic stuff:
+*************************************************************************************************************************************************
+1)
+  Get method : defines what is gonna happen when the browser gonna send a request to the server in a specific route.
+  ex: app.get("/",(req,res)=>{res.send("Hello world")};
+
+
+  you can also send files : res.sendFile(__dirname+"/index.html");
+
+*************************************************************************************************************************************************
+2)
+  Get method when it comes to api: defines what is gonna happen when the browser send a request to the server holding kel el data of the api.
+
+  aw fik tshuf el get method when it comes to api, to simply getting the data of the api, w bethakam shu sewe ka response.
+
+  example: 
+
+const url =
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
+    cityName +
+    "&appid=24a378814964ff5a443bd3fd609a3e0c&units=metric";
+
+//get method
+  https.get(url, (response) => {
+    response.on("data", (data) => {
+      const weatherData = JSON.parse(data);
+
+       ......}
+
+I am defining what is gonna happen when the browser gonna send a request 3al server huwe w hemil el data of the api, in my case am hawil kel el response la a javascript object
+*************************************************************************************************************************************************
+3)
+  Post method: lamma teb3at data mnel form element 3a specific route,el server taba3 hayda el route btekhedon as requested, shaghlit el post method while targeting that same route,so targeting the same server li el data fi, to accept them and to store them 3anda, w fik teb3at response m3ayane
+
+
+example:
+<form action="/" method="post"> <input type="text" name="city" /> <button type="submit">SUBMIT</button>
+
+el action attribute: bi7adid wen bade eb3at hal data
+el method attribute: bi7adid enne bade estaamil post method talemon men hunik
+el name attribute: bikhazin el value of input bi variable bsamiya bel name w beb3aton 3al server
+el button submit, it sends everything 3al server once clicked
+
+//post method accepting and storing the data who are requested in the server and sending a response
+app.post("/",(req,res)=>{
+res.send(" I have recieved the data thank you")
+});
+*************************************************************************************************************************************************
+4)
+  Post method when it comes to apis: shaghleta teb3at data 3a hal specific api, taysiro hal data bel api.
+
+example:
+
+ const url="https://us17.api.mailchimp.com/3.0/lists/6e4ca868b6";
+     const options = {
+         method:'POST',
+         auth:process.env.MAILCHIMP_API_KEY
+     }
+     const request = https.request(url,options,(response)=>{..........} ) // u can add if(response.statuscode===200){...} to make sure the api is                                                                              working
+     
+     request.write( [stuff u wanna send,usually JSON string format object]) // sending the data to the api
+     request.end(); // done with sending
+
+NOTE: u need to require first https and request modules
+*************************************************************************************************************************************************
+
+NOTES when deploying a heroku node js app:
+*******************************************
+*********************************************************************************************************************************************
+1)
+  make sure to put a start in the script in the json package:
+
+ "scripts": {
+    "start": "node app.js", // make sure it is here
+    "startodev":"nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+ 
+ u can now also run ur server using: "npm start"
+ for startodev: "npm run startodev"
+*********************************************************************************************************************************************
+2)
+  now la2anno heroku 3ndo ktir people running apps on a specific port for example:3000
+  iyem bisir fi error w ur app won't run
+  so li bdk tsewi bdk taate heroku option to run ur server 3a port men 3ndo aw eza fi ma7al la ur server to run it 3laya:
+ 
+  So instead of using: app.listen(3000,()=>console.log("server running on port 3000"));
+  
+  USE: app.listen(process.env.PORT || 3000,()=>console.log("server has just started at port 3000"));
+
+**********************************************************************************************************************************************
+
+3)
+   eza your app am testaamil fiya api key w u are posting it to github, iyem el app li 3atetak el apikey gonna disable it la2an now ur api key is 
+   public.... so li bdk tsewi huwe ennak thot hal api key juwet environemental variables w testaamil gitignore
+
+1: you create a file ".env"  bser3a bas bethot el extension
+
+2:jouwet el .env file, bethot your api key inside of a variable
+ex: MAILCHIMP_API_KEY = nader1:cd47967d6945cb720e0dd697b151bcfa-us17
+
+3:create a ".gitignore" file, hek lama teb3ata 3a github it is gonna ignore kel el files li men juwet hal file hateton, bas yet their functionality will stay there bas just not public...
+ex: file:.gitignore
+       file:style.css    // bethot esmon juwet el file,(u type it)
+       file:.env        
+
+lamma tsewe git add .gitignore,git commit, w git push, li haysir houwe enno hal 2 files hayenbe3to 3a github w their functionality hatdal mawjoude la ur project bas they wont be visible for the public!
+
+
+4:npm install dotenv // this module stores api keys w credential infos eza bdk thoton bi ur project bi tari2a not visible at all even in ur js                         file
+
+5: Now you already created a .env file, and stored hal api key jouweto, so kel li bdk tsewi to access it in js:
+
+require('dotenv').config()
+
+// and now to refer lal variable li bi ur env file:
+
+process.env.(name of variable inside of .env file)
+ex:process.env.MAILCHIMP_API_KEY
+
+6: bdk t2oul la heroku enno u are using environmental variables,before deploying it:
+
+so go to : settings, then press on: Reveal config vars , then you add your env variable in a form of Key and value
+
+*************************************************************************************************************************************************
+
+*)
+  sharklasers website: it creates disposable emails for you.... yaane eza bdk temporary emails, just to make sure ur app am te2dar teb3at emails
+                                                                badal ma teb3aton 3a ur offcial emails aw shi, u create disposale emails w                                                                 bteb3aton 3al disposable emails w fik tshuf el result
+
+************************************************************************************************************************************************* 
+  
+*)
+  NOTE: you can use res.send(...) only once, but if u want multiple lines to write and send them use res.write("Hello")
+                                                                                                   res.write("world")
+                                                                                                   res.send() //ekhir shi :) btetreka empty
+
+*************************************************************************************************************************************************
+
+*)
+    You can send an html file as a response by using : res.sendFile(__dirname+"/(name of ur html file with extension] ).
+   we are using __dirname to print the whole path and ekhir shi refering to our file /index.html, la2ano when u deploy the app
+   lezim tkoun hatit el full path tayemshe l7al it wont work and be recognised eza hatit relative path
+   
+ 
+   el (__dirname) it prints the path wen el file now! so eza u create a js file and console.log(__dirname) el output bikun el dir wen hayda el file mawjoud bi ur computer
+*************************************************************************************************************************************************
+
+*)
+   in order to your server in express to have static files(local files) like css or images:
+
+1: put them in a folder inside the dir of your project, put the images and css stylesheet
+
+2:put them again inside of a folder...(kel shi bas bikoun already juwet a folder)
+
+3:app.use(express.static("(name of folder that has css and images and their folders"));
+
+4:change the href and src for link and images in html, relative to their location now and u are all set! but do not mention their grandfather folder!
+ex: fold:public    // mention him in app.use(express.static(...))
+        fold:css
+            file:style.css
+                href="css/style.css"   // like that
+*************************************************************************************************************************************************
+
+*)
+  npm uninstall // to uninstall a package
+  npm install or npm i // to install a a package
+
+*************************************************************************************************************************************************
+
+*)
+  const http = require("http");   // byeje automatically bel node modules when you initialise npm in your project, all u do is require it
+console.log(http.STATUS_CODES);  // printing all the http status codes instead of looking them up online
+console.log(http.METHODS); // print all the http methods that u could use (get,put,post,delete,head,options...)
+
+*************************************************************************************************************************************************
+
+*)
+  npm.js (for npm packages)
+  ejs (for js templates)
+
+*)
+  
+
+
+

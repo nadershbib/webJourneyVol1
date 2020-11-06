@@ -1,0 +1,413 @@
+https://reqres.in/api/users/2
+
+
+
+1)
+   ARROW FUNCTIONS:
+
+var hello= function() {               // we are automatically saving the return value of the function in a variable!!!!!
+
+           return "Hello World";
+}
+hello();  // this is how u call an automatic return saver variable!!!
+
+
+BADEL MA TEKTOB:
+
+Manual  return saver:
+
+function hello(){
+return"Hello world";
+}
+var hello=hello();    // am sayiv el return value of the function hello jouwet el hello variable
+
+console.log(hello);  // Hello world
+
+
+FIK TEKTOB:
+
+Automatic return saver:
+
+var hello=function(){                     // bser3a el variable am tkhazin el return taba3 el function...
+                    return "Hello world";
+                    }
+
+console.log(hello()); // Hello world
+hello();    // "Hello world"
+
+
+
+
+NOTE: bel manual return saver when u wanna print the variable, u print it without ();   console.log(hello);
+      bel automatic return saver when u wanna print the variable, u print it with ();  console.log(hello());
+
+
+
+ARROW :::::
+
+
+*)
+   so basically in ES6 el arrow function, hiye simpler and easier way to write automatic return saver 
+   instead of writing : function()   this part is replaced by ()=>
+
+     example: var hello= function(){...} ES5
+              var hello= ()=>{....} ES6 arrow function
+
+
+
+*)
+    if the function has 1 return statement you can write it:
+     
+          hello = () => "Hello World!";    // u can skip the curly braces, if it has 1 statement...
+
+*)
+    You can put parametres:::
+ 
+           var hello= (num1,num2) => {....} ;  equivelant to: var hello= function(num1,num2){.....};
+           console.log(hello(1,2));
+
+w akid eza u are returning 1 statement u could write it :   var hello= (num1,num2) => num1+num2;
+
+
+
+
+Note: deyman el arguments eza bdk yehon string lezim tmare2on as a string ex: hello("nader");
+
+important tip: var hello = (hi) => "Hello world";
+               
+               eza hatit 1 parametre only ma daroure t7ot el parentheses lal function so betsir:
+                
+               var hello = hi => "Hello world";
+
+*************************************************************************************************************************************************
+           
+
+2)
+   PROMISES::
+
+
+ a promise represents a value that is unknown now but can be known in the future. (aync value)
+*************************************************************************************************************************************************
+
+ 
+mnel ekhir: a promise huwe shi mabnaarif his value at the current time bas hayen3araf his value in the future, w hal value ya betkoun resolved or fulfilled ya betkoun rejected...  w bethot enta mainly handlers 3laya(ya3ne eza toli3 resolve) do blabla w eza ma toli3 do blablabla , el then function handles el resolve state lal promise w el catch function handles the rejected state lal promise.
+
+Note: enta mainly btektob el conditions kiff fi ykoun resolved w kiff fi ykoun basically rejected manually aw iyem 3ndk bikuno maktoubin automatically behind the scenes metel el fetch() function, so eza el api aw whatever juweto fata7 bikun resolved eza la2 bikoun rejected
+
+
+*************************************************************************************************************************************************
+ 
+ EXAMPLE: 1:when you request a uber ride, the driver promises to pick you up
+          2: while you are waiting, the drive is pending
+          3: in the future if the driver resolved to pick you up then the promise is fulfilled
+             if not then the promise is rejected, yet the request is still there and they are going to find u another driver....
+
+
+
+
+code:
+                    // new Promise constrcutor, then btaati as an argument function bkemela fiya 2 parametres... w u write el conditions jouwa:
+                   // resolve = success promise fulfiilled
+                  // reject = promise rejected,fail.
+
+PENDING STATE, with conditions for when to resolve and to reject:
+
+       const ride = new Promise( (revolve,reject) => {
+
+                            if(arrived){ resolve("driver arrived");}
+                            else{ reject("driver failed");}
+                           
+
+                                       });
+
+
+Consumer (person waiting for the drive):
+                                             ride                                             //then is a function that handles full filements
+                                                  .then(value=> {
+                                                            console.log(value);// driver arrived
+                                                                })
+                                                                                                         // catch is a function for exceptions
+                                                  .catch(error=>{ console.log(error)   // driver failed   
+                                                                })                   
+ 
+
+EZA EL DRIVER FULL FILED HIS PROMISE W EBIL EL YEKHOD EL ZBOUN, BYENBA3ATO MESSAGE EL CONSUMER DRIVER ARRIVED
+EZA LA2 BYENBA3ATLO DRIVER FAILED!!!!!!
+
+
+
+EXAMPLE 2: child promising to clean his room and fulfilling his promise at the end:::::
+
+
+var clean= new Promise((resolve,reject) =>{
+
+let cleanroom=true;
+if(cleanroom){
+    resolve("CLEAN");
+}
+else{
+    reject("Unclean");
+}
+
+
+
+
+});
+
+
+clean.then(function(result){        // el result parametre  hiye el value lal resolve eza el promise gets fulfilled
+    console.log(result);
+}).catch(function(result){        // same here el result parametre houwe el value lal reject if the promise gets denied
+    console.log(result);
+});
+
+
+
+
+SIMPLY::::: 
+
+1: we are creating an object that contains a specific promise. ( new Promise( (resolve,reject)=>{...}) )
+2: we write the conditions of that promise of how it can be fulfilled or rejected. (using resolve,reject) function parametre.
+3: according to the conditions of the promise, we trigger that promise to see if it got fulfilled or rejected(using .then and .catch)
+
+
+*************************************************************************************************************************************************
+
+
+ASYNC/AWAITS:
+
+ASYNC:
+       it is a keyword that is used before a function, and that specific function returns mainly a promise!!!!!!
+
+ ex: 
+        async function f() {
+                              return 1;     // always the values in the async function , are resolved promises( fulfilled promises)
+                                            // or you could write:  return Promise.resolve(1);
+                           }
+
+      so to trigger the resolved promise: you need the .then function
+
+      so::      f().then(alert);    // this will return 1
+
+
+
+AWAITS:: 
+         The keyword await makes JavaScript wait until that promise settles and returns its result.
+         shaghelto ykhale el promise yekhod wa2to to run w yemshe 7alo, then it triggers el promise...
+         can only use it inside an async function..
+example:
+
+
+
+async function f(){
+
+let promise = new Promise((resolve,reject) =>{  // creating a promise
+
+setTimeout(() => resolve("Hello my dear"),2000); // setting time for the promise to get resolved(2 seconds)
+                                                 // deyman el timeout function btekhod 2 parametres( function(),milliseconds)
+});
+
+let wait = await promise;       // shaghlit el await hone tkhale el promise yekhod wa2to, then ykafe el code and trigers the promise.
+                                // el wait el value te3ita, te3it el resolve mainly..
+
+alert(wait);
+}
+f();
+
+
+await in simple words:::: Bta3mil pause lal execution of the rest of the function until the promise is fully settled and is running, or mainly                           makes the function waits until the promise
+                          (li jeye direct men baad el await keyword) is fully settled and took his time to run. 
+
+
+************************************************************************************************************************************************
+
+Most important JSON METHODS:::::
+
+
+*)
+   JSON.parse(string value or variable containing a string);
+   it is used to transform any string or text we got as a json format into java script object.
+
+quick example:
+
+​<p id="demo"></p>
+
+<script>
+var txt = '{"name":"John", "age":30, "city":"New York"}'    // string json format
+var obj = JSON.parse(txt);                                  // converting json string format into javascript object
+document.getElementById("demo").innerHTML = obj.name + ", " + obj.age;  // simply using now the java script object
+</script>
+
+
+*)
+   JSON.stringify()  
+   it is used to convert any java script object into a json string format....
+
+  example:
+
+​<p id="demo"></p>
+var obj = { name: "John", age: 30, city: "New York" };
+var myJSON = JSON.stringify(obj);                       // converting java script object to a json format
+document.getElementById("demo").innerHTML = myJSON;
+
+
+*************************************************************************************************************************************************
+
+
+FETCHING AN API::::
+
+
+
+*)
+    
+
+    async function name(){
+
+
+       let response = await fetch("https://reqres.in/api/users/2"); // here we are letting the fetch(...)api promise to settle, then continue the                                                                           execution of the rest of the function.
+
+
+
+
+
+
+
+
+fetching an api is 2 steps process:
+
+  1st stage: you can check by using the built in class(Response) with method if the api is working and see his http status
+             using (response.ok and response.status)
+
+example:
+
+        if (response.ok) { // if HTTP-status is 200-299   
+  // get the response body (the method explained below)
+  let json = await response.json();
+} else {
+  alert("HTTP-Error: " + response.status);
+}
+  
+2nd stage: 
+                to get the response body, you need to use response methods:
+
+                      response.text() – read the response and return as text,
+                      response.json() – parse the response as JSON,
+                      response.formData() – return the response as FormData object
+
+
+MAIN EXAMPLE TO USE:::
+
+
+
+async function name() {
+  let response = await fetch("https://reqres.in/api/users/2"); // pausing the execution of the rest of the function, until the api fully settles
+                                                                  and runs
+  return response.json();      // we are here transforming the response into a JSON format
+                               // NOTEEEEE:: ma daroure ykoun esem el variable response fiya tkun hayalla shi....
+                                                 ex: let hello= await fetch(....)
+                                                     return hello.json();
+                              // bas bel .then function that returns the fulfillement of the promise, majbour thot el (response) as a parametre
+}
+
+name().then((response) => {       // we are using the .then function, to return the fulfillement of the promise
+                                  // deyman to access el json, bdk as a parametre bel .then function (response)!
+  console.log(response.data);    // you can access specific parts of the json format by using(.) then bethot lshi li bdk yeh
+                                 // eza bdk tetba3 kel el json format mabadk shi specific simply (.response)
+
+  document.querySelector("#firstNameElement").innerHTML = response.data.first_name;
+  document.querySelector("#LastNameElement").innerHTML = response.data.last_name;
+});
+
+NOTE: tateba3 kel shi bel dom bel webpage as a json format, bdk thot:  =JSON.stringify(response); // betkun am t7awil el response li hiye json                                                                                                     object la a json strinf format which can be                                                                                                     displayed in the web page. 
+        
+
+
+
+Tatlakhis kel el code bi 1 line, crazyyyyy fast codeee::
+
+fetch('https://reqres.in/api/users/2').then(response=>response.json()).then(json=>document.querySelector("p").innerHTML=JSON.stringify(json));
+
+explanation: 1:fetching el api promise
+             2:bser3a since hayda promise, we are triggering it using the .then function
+             3:awal then function, ekhde 1 parametre (response) then we are returning the response as a json object format (response.json())
+             4: tene then function, ba3ed ma radayna el response as json format, 3tayneha 1 parametre (json) w hal json parametre bye7mol
+                el json format, so men baada we are returning using the stringify method this json object format to a json string format.
+                   
+Note:::: the stringify method is optional, you can just type = json or json.data.first_name;
+                                                                               
+               
+Note: fik bi tene then function t7ot mainly (response=>....) targeting the response as a json format, zet lshi eza hatet json aw response
+      bi tene parametre, bas ahama shi awal then function tkoun el parametre response la2ano bdk thawil el response la json format.
+
+       fik thot json aw data, to console everything as a json format bi tene then function!
+
+      el response, btaatik object then btekbos 3laya betshuf el format
+      el json w el data parametres bser3a betshuf el data bel console           
+
+Tip: fik thadid shu bdk bel json format  using el (.) ex: json.data.first_name;
+     
+
+
+*************************************************************************************************************************************************
+           
+
+
+AJAX GET,PUT,POST,METHODS::::
+
+
+
+
+GET:
+
+$.get("https://reqres.in/api/users/2",function(data,status){
+
+console.log(data);
+
+
+});
+
+
+POST:
+
+$.post("https://reqres.in/api/users/2",{
+
+userId:99,
+room:"clean"
+
+
+},function(data,status){
+
+  console.log(data);
+}
+
+
+);
+
+PUT:
+
+
+$.ajax("https://reqres.in/api/users/2",{
+
+method:'PUT',
+contentType:'application/json',
+processData:false,
+data:JSON.stringify({
+  userId:99,
+  room:"unclean"
+})
+
+
+}).then((userInfo)=>console.log(userInfo));
+
+DELETE:
+
+
+$.ajax({
+
+url:'https://reqres.in/api/users/2',
+type:'delete',
+success:(result)=>alert("successfully deleted this api")
+
+
+});
+************************************************************************************************************************************************

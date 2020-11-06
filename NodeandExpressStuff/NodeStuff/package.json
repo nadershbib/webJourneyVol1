@@ -1,0 +1,14 @@
+{
+  "name": "testingnpm",
+  "version": "1.0.0",
+  "description": "this is a normal npm test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "NaderShbib",
+  "license": "ISC",
+  "dependencies": {
+    "supervillains": "^3.0.0"
+  }
+}

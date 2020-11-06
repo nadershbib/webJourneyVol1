@@ -1,0 +1,44 @@
+3 july:
+
+*)
+   wireframe is when u design on a pen and paper or any basic app how your website gonna look....
+
+*)
+    UI design patterns is useful to get inspiration how u wanna design ur website 
+
+*)
+   dribble.com // good site to see inspiration website design....
+
+*)
+    search for a good site that do wireframing and learn how to use it online...
+
+*)
+    use draw.io for wireframing and watch a quick tutorial for it....
+
+*)
+    
+
+
+5 july:
+
+
+ *)
+     Min-Width
+
+Here is an example of a min-width query.
+
+@media only screen and (min-width: 600px)  {...}
+What this query really means, is "If [device width] is greater than or equal to 600px, then do {...}"
+
+Ya3ne minimum-width:600px;  ka2an am n2oul minimum 600 w kel shi fo2 el 600.    //interval: [600,infinite[
+
+
+*)
+    @media only screen and (max-width: 600px)  {...}
+What this query really means, is "If [device width] is less than or equal to 600px, then do {...}"
+
+maximum-width:600px; maximum ykun 600px w kel shi ta7to... // interval: [0,600]; 
+
+
+*)
+     being specific: min-width:400px; max-width:900px;     // interval : [400,900]

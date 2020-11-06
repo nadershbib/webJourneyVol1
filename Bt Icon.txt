@@ -1,0 +1,15 @@
+<!-- Font Awesome CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+
+
+
+
+e.g. fa-search, fa-user, fa-star, fa-calendar, fa-globe, etc.) defined in font-awesome.min.css file.
+
+https://fontawesome.com/v4.7.0/icons/ // go to this site to know icons classes names... put the class name after (fa-) (fa-nameclass)
+
+
+
+<h1><i class="fa fa-globe"></i> Hello, world!</h1>

@@ -1,0 +1,237 @@
+*)
+  doucuments = record; //when speaking in mongoose
+
+*)
+  tatetba3 kel shi bel collection, el records li jouwet a collection:(another way)
+(name of col how it is writen in app.js).find({},function(err,[any name u want]){
+  
+if(err){...}else{console.log([any name u want]);}
+
+
+example:
+
+Item.find({},(err,foundItems)=>{
+
+    if(err){console.log(err);}
+    else{ console.log(foundItems);}
+
+   });
+
+
+NOTE: when we refer to foundItems betshufa as an array 3nda objects(record)....    betshufa as an array li hemle kel shi aw collection!
+
+*)
+   List.findOne({name:listName},(err,foundList)=>{
+    foundList.items.push(item);
+    foundList.save();
+    res.redirect("/"+listName);
+  })
+
+NOTE:foundList returning an array, el collection! bas msameyina name men 3anna
+     el foundList.items // we are accessing el arr
+
+*)
+  [{obj1},{obj2},{obj3}];
+
+To refer to obj1 : arrayname[0];
+obj2: arrayname[1];
+obj3:arrayname[2];
+
+
+*)
+*************************************************************************************************************************************************
+  combo 7elo to know:
+ 
+ if u wanna add values to an array only once:
+                                     if(arrayName.length===0){ // add elements to the array }
+                                     else{.....};
+
+also eza bdk to add the elements once bel array then bser3a tshufon bel web ( entering the else statement) : li fik tsewi instead of running the server again tayfuto bel else statement, bel if statement simply ba3ed ma they get added, use: "res.redirect("/");"
+
+// it will run again the get and this time el if condition wont work w bifuto bel else w betshuf el result....
+
+example:
+---------
+app.get("/", (req, res) => {
+  let today = date.today();
+  Item.find({}, (err, foundItems) => {
+    if (foundItems.length === 0) {
+      Item.insertMany(defaultItems, (err) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("successfuly inserted the default Items!");
+          res.redirect("/");
+        }
+      });
+    } else {
+      res.render("list", { TODAY: today, ITEMS: foundItems });
+    }
+  });
+});
+
+*************************************************************************************************************************************************
+
+NOTE: res.redirect("/"); // deyman direct 3al get method
+
+*************************************************************************************************************************************************
+To remove a record, u can use:
+
+findByIdAndRemove([id of record],function(err){.......} );  // id of record is the: _id      bteje by default
+
+example:
+
+const checkItemid = req.body.checkbox;
+Item.findByIdAndRemove(checkItemid,(err)=>{
+  if(err){
+    console.log(err)
+  }else{
+    res.redirect("/");
+  }
+});
+
+*************************************************************************************************************************************************
+
+*)
+  To submit a form on checked box, add this attribute 3al ekhir:
+  onChange="this.form.submit()"
+
+*************************************************************************************************************************************************
+
+app.get(":/customListName",(req,res)=>{
+
+console.log(req.params.customListName);   //output in console: customListName el shi li hato el user mainly (/Home /Work aw hayalla shi)
+
+
+
+});
+*************************************************************************************************************************************************
+
+
+items:[itemsSchema]
+
+simply means we will have an array containing objects, and these objects are following the stucture of itemsSchema
+
+*************************************************************************************************************************************************
+
+.find() method returns an array bel parametre (collection)
+.findOne() returns an object bel parametre (document)
+
+*************************************************************************************************************************************************
+Code to make sure you have found a sepcific record in a collection:
+
+ List.findOne({name:customListName},(err,foundList)=>{
+    if(err){
+        console.log(err)
+    }else{
+       if(foundList){
+         console.log("exists!")
+       }else{
+          console.log("Doesn't exists!")
+       } 
+    
+    }
+  });
+
+*************************************************************************************************************************************************
+
+To redirect 3a zel el get method: el route li am teshteghil fi:
+1: sajjil el route bi variable;
+ex: const customListName = req.params.customListName;
+
+2: res.redirect("/"+customListName);
+
+*************************************************************************************************************************************************
+
+input with closing and having an attribute of hidden,is used to send informations to the server while the user don't have any access for it
+
+example:
+<input type="hidden" name="listName" value="<%=TODAY%>"></input>
+
+*************************************************************************************************************************************************
+
+To find an object inside of an array and remove it or update it li houwe already as key and value pair inside of a record:ex*, items:[{},{}]
+
+findOneAndUpdate({identifier},{updates},function(err,results){....} );
+
+(col name).findOneAndUpdate({identifier to get the object record},{$pull:{items:{_id:#} } },function(err,results){...};
+
+1:getting the record of an object
+2: pulling from an array key he has called"items" an object who have the _id of : ## and removing it!
+3:call back function!
+
+example:
+
+
+ List.findOneAndUpdate({name:listName},{$pull:{items:{_id:checkItemid}}}, (err,foundList)=>{
+  if(!err){
+    res.redirect("/"+listName);
+  }
+});
+
+*************************************************************************************************************************************************
+
+
+*)
+  lodash: npm i lodash
+
+it is used tatethakam kif maktouble string w tenkatab.... (awal letter capital rest small case letter w hek...)
+
+2:const _ = require("lodash");
+
+3: check documentation on how to use it
+
+quick example:
+
+const hello = _.capitalize("nader"); //out when print:Nader
+
+*************************************************************************************************************************************************
+
+TO DEPLOY MONGOOSE DATA BASE ON HEROKU:
+-----------------------------------------
+
+1: go to mongoDB Atlas, and create a new cluster....(email for that:nader_....)
+
+2: set the plan free, 512 mb and 500 max connection so u don't get charged
+
+3:wait till the cluster loads
+
+4: go to security,database, and create new database user , put username and pass and change the privileges to ATLAS ADMIN
+
+5: Go to IP,add IP address, press "allow access from anywhere"
+
+6: Now go back to cluster, and press "connect", then press "connect" with mongo shell,then enter version u are using for mongodb
+
+7:copy the code li bi arjouk yeh, and paste it in cmd (replace <dbname>, by a db name)
+
+8: put ur pass that u typed when creating a new db user, and press enter ( do not worry when they say mongo shell and mongodb not same version)
+
+9: you can create collection, go to collection w create w hek... w since u are connected 3a ur server (mongo atlas) mnel cmd u can run commands men hunik la tshuf ur server...
+
+
+The real deal now:(connecting your app to mongoose on ur local system)
+
+10:press connect,connect with ur application
+
+11:copy the link,and headback to app.js and replace badel el url ("mongodb:/localhost.......");
+NOTE:select all the part before ("/[your db name]) and paste it
+
+12:name the <dbname> just like the name of ur database bel ekhir....
+
+13: ma7e men <dbname> la 7adid "/" just before ur db hek lezim ykun shakla:
+mongodb+srv://nadershbib:test123@todolist.xr4pi.mongodb.net/todolistDB
+
+eza ma zabtit khale el form hek:
+
+mongodb+srv://nadershbib:test123@cluster0.xr4pi.mongodb.net/todolistDB?retryWrites=true&w=majority
+
+
+14:deploy 3ade to heroku :D
+
+************************************************************************************************************************************************* 
+
+
+
+
+
+

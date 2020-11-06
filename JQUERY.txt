@@ -1,0 +1,206 @@
+JQUERY:
+
+1: to use Jquery, type in google: jquery cdn google links... go to the site and copy the link then add it to your script in your html file:
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+NOTE: deyman el script link te3 el jquery awal shi lezim ykoun, w baadena tahto el script links lal js files...
+la2an el code byen2ara men fo2 la tahet deyman!
+
+NOTE: eza bdk to include el scripts, juwet el head element.... make sure thot bel js file:
+$(document).ready(function(){  // main reason: la2an it might access the jquery before the document is ready, so to make sure it access it when                                                the  document is ready benhot hal function w bnektob el code inside.
+
+
+
+
+
+
+});
+
+**********************************************************************************************************************************************
+
+SELECTING ELEMENTS:
+
+*)
+    $("[element name],[id],[element childs],[.class],[element.class,...] "); 
+   
+    // basically el $ is equivalent to querySelectorAll.
+
+
+*)
+:first	$("p:first")	The first <p> element
+:last	$("p:last")	The last <p> element
+:even	$("tr:even")	All even <tr> elements
+:odd	$("tr:odd")	All odd <tr> elements
+
+*********************************************************************************************************
+ STYLING ELEMENTS:
+*)
+    
+
+   selectElement.css("[property]","[property value]");   // use .css("..","..");
+
+*)
+    fik bser3a tektob random class name w to style it bel css
+
+     then bel js file, eza bdk hal style to be applied 3a shi element:
+
+      selectElement.addClass("[nameOfClass]");  // since zedet 3a hal element el class now el style is going to be applied 3le.
+
+      
+       .removeClass("..."); to remove a class.
+       .hasClass("..."); // ta tet2akad eza particular element 3ndo that class, it returns a boolean true or false.
+***********************************************************************************************************************************************
+
+
+Manipulating text :
+
+*)
+    selectelement.text("HelloWorld");  // this will change the text of the selected element.
+
+*)
+    eza bdk tzid (<em> aw <strong>); 
+    btestaamil   .html("<em>HelloWorld</em>");
+******************************************************************************************************************************************
+    JQUERY TRAVERSING:(TEN2IYIT EL ELEMENTS BI METHODS)
+    *****************************************************
+*)
+    The parent() method returns the direct parent element of the selected element. // $("span").parent();
+
+*)
+   The parents() method returns all ancestor elements of the selected element.
+
+*)
+    The children() method returns all direct children of the selected element.
+
+*)
+    he siblings() method returns all sibling elements of the selected element.
+                    //yaane eza staamalta w huwe el element child of a parent element, kel el childs taba3 hal parent element hayetna2o since kelon children la same parent so bisiro kelon ekhwe aw siblings....
+
+*)
+    The first() method returns the first element of the specified elements.
+
+*)
+    The last() method returns the last element of the specified elements.
+
+*)
+    IMPORTANTTTTTTTTTTTTTTTTTTTTTTTTT::::::::
+   ************************************************
+
+       The eq() method returns an element with a specific index number of the selected elements.
+           
+          EXAMPLE:       for(var i=1;i<=3;i++){
+$("button").eq(i).css("background-color","blue");      // this will change (2nd,3rd,4th elements to bg color blue) (counting is 0 always)
+}    
+    
+
+*)
+    The filter() method lets you specify a criteria. Elements that do not match the criteria are removed from the selection, and those that match will be returned.
+                        The following example returns all <p> elements with class name "intro": $("p").filter(".HelloWorld");
+
+*)
+      Tip: The not() method is the opposite of filter().
+
+*************************************************************************************************************************************************
+
+MANIPULATING ATTRIBUTES:
+---------------------------
+
+*)
+    .attr("[attribute that u wanna get]","[attribute new value]"); // btestaamela tatghayir el values of an attribute, or simply add a new attr
+************************************************************************************************************************************************
+EVENT LISTENERS:
+******************
+
+*)
+    to add a click event listener:
+    
+             selectedElement.click(function() {
+                                        // code to be executed when event is called :)
+                                  
+                                               });
+        
+*)
+     .toggleClass(".."); // to toggle classes in Jquery, eza ma mawjoud yenhat, w eza mawjoud yenhsel....
+
+*)
+   .keypress(function(event){....});   // event to detect keys pressed... console.log(event.key);
+
+
+*)
+    FIK TESTAAMIL el vanilla js(original js) way : bas badel ma testaamil .addEventListener("click",helloworld); 
+                                                    you use:
+                                                                          .on("click",helloworld);
+
+************************************************************************************************************************************************
+
+*)
+   .before("<h1>helloworld<h1>");  // tatzid element before a selected element
+
+   .after("///////////////////"); // tzid after mainly.
+
+*)
+   .prepend("....."); // tatzid shi jouwet el selected element bas abel el kelme te3ito eza 3ndo kelme. 
+                      // also used to add elements lal dom.ex: $("body").prepend("<h1>HelloWorld</h1>");
+*)
+   .append("....."); // tatzid shi jouwet el element bas ykun men ba3ed el content or text... 
+                     // also used to add elements lal dom.ex: $("body").append("<h1>HelloWorld</h1>");
+
+*)
+    .remove(); // to remove a selected element
+
+************************************************************************************************************************************************
+
+ANIMATIONS RELATED STUFF:
+
+*)
+   .hide(); // to hide an element
+*)
+    .toggle(function(){        // just like u toggle a class, to toggle a function you use that function....
+                              
+                      });   
+
+*)
+    .show();// to show an element (opposite of hide);
+
+*)
+    .fadeToggle(); // to toggle the class( hide,show) easy way to hide and show the elements.
+*)
+   .slideToggle(); // everything collapse uppon the element(almost metel fadeToggle());
+
+*)
+    .animate({[property]:"value"}); // to animate stuff
+
+*)
+   you can chain stuff together .slideUp().slideDown().animate({...}); 
+*************************************************************************************************************************************************
+    
+
+*)
+    .each(function(){   // 3al selected element, hay btaamil iteration 3a add el selected elements, w btektob bel function shu bdk ysir
+
+                     $(this) // hayde it selects el element li bel specific iteration.
+               
+                    };
+
+*)
+    String(variable);   // hay bethawil variable value la a string, useful eza bdk thawil ra2em la string w thota juwet an element bel html.
+
+
+*)
+     .val();  // to get the value of the input text box.
+
+
+*)
+        To keep track w tghayir mainly el value taba3 el input as long el user am bi ghayera, btestaamil event listener ("input",...);
+
+     $("input").on("input",function(){
+
+
+$("h1").text($(this).val());     // betghayir el h1 la 7ayala shi el user am yeketbo bel input text box...
+
+
+});
+
+

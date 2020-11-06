@@ -1,0 +1,390 @@
+*)
+    what is an api? (application programming interface)
+
+An api huwe el link between el request and response la ur program....
+
+example: eza re7et 3a mat3am el link between ur request( el ordre li talabto) w el response( delivered food at your table)
+   
+         is the waiter( huwe el api bi real life example)....
+
+
+yaane shaghlit el api, btetla2a request mnel user then betrou7 hiye 3al data base w betredelak response based on that request...
+
+yaane eza bdk tehjoz ticket tayara la brand m3ayane, el api byekhod hal request then birou7 3al data base w biredelak el response eza
+fik tehjoz hal seat eh aw la2 based on the api data base.....
+
+
+simply to put in word: shaghlit el api hiye: byekhod el user request w biredelo response based 3al informations bel server.
+
+aw fik tshufa as "Live data being imported to ur program" metel el weather app, el api byekhod el weather bi kel balad at the live moment
+w bizet el response bi ur app bi elak shul weather now bi hal matari7...
+
+
+fik thot apis about movies,weather,flights,google maps, li bdk yeh......( b=het betkhae el user to connect w yshuf movies,weather,flights) at the live moment....
+
+*)
+    what is restful apis ?
+
+
+simple definition 1::
+
+What is RESTful API?
+
+A RESTful API is an application program interface (API) that uses HTTP requests to GET, PUT, POST and DELETE data.
+
+A RESTful API explicitly takes advantage of HTTP methodologies - GET, POST, PUT, DELETE.
+
+GET - Retrieves the data/resource
+
+PUT - Update the data/resource
+
+POST - Create a resource
+
+DELETE - Remove a resource
+
+
+
+
+While the HTTP POST method is used to send data to a server to create or update a resource, the HTTP GET method is used to request data from a specified resource and should have no other effect.
+
+
+el post bteb3at data lal server to create or update a resource aw shi....
+el get shaghleta totlob data men specified ressource aw el server tathsufon aw shi.....
+
+
+What is HTTP?
+
+HTTP means HyperText Transfer Protocol. HTTP is the underlying protocol used by the World Wide Web and this protocol defines how messages are formatted and transmitted
+
+
+
+
+
+simple definition 2:::
+
+
+Combining the two definitions, we now know that a RESTful API is an Application-Programmer Interface for communicating with an application across a network.
+
+For example: you as a web application programmer want to use a particular back-end service I wrote that does something useful. For instance, it returns a list of fruit with a particular property. I will define certain methods and routes you can call in order to use my service. You don't need to know how my service works under the hood, you just know certain things like:
+
+- what type of request do you need to send to my service: GET, POST, PUT, DELETE, HEAD?
+
+- where do you send the request (route?
+
+
+
+
+
+
+*)
+   bel rest apis, lamma tekhod el user request, betredda el response based on 2 forms:
+
+  1:JSON format
+  2:XML format
+
+
+*)
+   "read and write requests" equivelant to "get and post requests"
+
+*)
+    query strings are used to get the keys and values of a url in a browser.....
+    usuallu=y used in searching stuff... w hene bikuno ba3ed el main url/?q=.... hek stuff
+
+
+
+
+
+ URLSearchParams Let's have a look at how we can use this new API to get values from the location!
+
+// Assuming "?post=1234&action=edit"
+
+var urlParams = new URLSearchParams(window.location.search);
+
+console.log(urlParams.has('post')); // true (btet2akad el post key mawjoud)
+console.log(urlParams.get('action')); // "edit" (print el value la specific key)
+console.log(urlParams.getAll('action')); // ["edit"] (print all the values la specific keys)
+console.log(urlParams.toString()); // "?post=1234&action=edit" ( bteta3 kel el keys and values kif maktoubin bel url)
+console.log(urlParams.append('active', '1')); // "?post=1234&action=edit&active=1" ( betzid key w value 3al url)
+
+
+
+*)
+   apis keys:
+
+1:identifies your app and requests
+2:parts of your requests
+3: identification
+4:authorization
+
+3 and 4 bel nesbe lal server, eza hal keys are identified by the server aw hal specific key is authorized tayfut 3al server...
+
+
+*)
+   JSON:
+
+quick example:
+
+*1:
+
+{
+
+"employees":[
+  {"firstName":"John", "lastName":"Doe"},
+  {"firstName":"Anna", "lastName":"Smith"},
+  {"firstName":"Peter", "lastName":"Jones"}
+]
+
+}
+
+
+In the example above, the object "employees" is an array. It contains three objects.
+
+Each object is a record of a person (with a first name and a last name).
+
+
+*2:
+
+A common use of JSON is to read data from a web server, and display the data in a web page.
+
+For simplicity, this can be demonstrated using a string as input.
+
+First, create a JavaScript string containing JSON syntax:
+
+var text = '{ "employees" : [' +
+'{ "firstName":"John" , "lastName":"Doe" },' +
+'{ "firstName":"Anna" , "lastName":"Smith" },' +
+'{ "firstName":"Peter" , "lastName":"Jones" } ]}';
+Then, use the JavaScript built-in function JSON.parse() to convert the string into a JavaScript object:
+
+var obj = JSON.parse(text);
+
+*3:
+
+Finally, use the new JavaScript object in your page:
+
+Example
+<p id="demo"></p>
+
+<script>
+document.getElementById("demo").innerHTML =
+obj.employees[1].firstName + " " + obj.employees[1].lastName;
+</script>
+
+
+
+
+
+*)
+    To read apis, simply bel postman app, use send bel get method w bte2ra el JSON text...
+   or inspect element, then network, then refresh, then preview....
+
+*)
+   To display an api response, bel dom tkoun using java script::::
+
+
+el async hone mheme w el await, la2ano huwe 3adatan el api bado wa2et to respond so tatkhale el webpage tontor shway majbour thoton
+async w el await, so after el api runs, do blablablabla.....
+
+async function name() {
+    let response = await fetch('https://reqres.in/api/users/2');
+    return response.json();
+}
+name().then(response => {
+    console.log(response);
+    document.getElementById('mainContainer').innerHTML = JSON.stringify(response);
+}
+);
+
+
+
+
+
+Tatet7akam mainly bi aya object bdk tetba3 bel JSON format bdk t7ot b3ed el (response) (.(objectname));
+
+w eza bdk tkun specific (.objname.propertyname) tatetba3 el value....
+
+
+async function name() {
+  let response = await fetch("https://reqres.in/api/users/2");
+  return response.json();
+}
+
+name().then((response) => {
+  console.log(response.data);
+
+  document.querySelector("#firstNameElement").innerHTML = response.data.first_name;
+  document.querySelector("#LastNameElement").innerHTML = response.data.last_name;
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*)
+    accessing apis with keys:
+
+3adatan iyem lama bdk testaamil apis mabikhalouk unless you have a key with specific value..... 
+3adatan bethot el key ba3ed el url link ( ?key=.....)
+
+example: http://api.timezonedb.com/v2.1/list-time-zone?key=FO2WBZYM1L5C&format=xml
+
+*)
+   common http status codes:
+
+200 OK
+Standard response for successful HTTP requests. 
+
+400 Bad Request
+The server cannot or will not process the request due to an apparent client error
+
+404 Not Found
+The requested resource could not be found but may be available in the future. Subsequent requests by the client are permissible.
+405 Method Not Allowed
+A request method is not supported for the requested resource
+
+402 Payment Required
+Reserved for future use.
+
+500 Internal Server Error
+A generic error message, given when an unexpected condition was encountered and no more specific message is suitable.
+
+*)
+    using get,put,post,delete:in java script::
+
+GET:(retrieve all the data/ressources in the server)
+
+fetch('https://reqres.in/api/users/2') // u put the url of the api or whatever u want.
+.then(response => response.json())
+.then(json => console.log(json))
+
+
+POST: The POST method sends data to the server and creates a new resource
+
+fetch('https://reqres.in/api/users/2', {  // fetching the api tatzid 3le data
+method: 'POST',
+body: JSON.stringify({   // bi hal section we are creating a new ID w baadena am nzido 3al server
+userId: 1,
+title: "clean room",
+completed: false
+}),
+headers: {
+"Content-type": "application/json; charset=UTF-8"
+}
+})
+.then(response => response.json())
+.then(json => console.log(json))
+
+
+
+PUT:The PUT method is most often used to update an existing resource
+
+
+// PUT to the resource with id = 5 to change the name of task
+fetch('https://reqres.in/api/users/2', {
+method: 'PUT',
+body: JSON.stringify({
+userId: 1,
+id: 5,
+title: 'hello task',
+completed: false
+}),
+headers: {
+"Content-type": "application/json; charset=UTF-8"
+}
+})
+.then(response => response.json())
+.then(json => console.log(json))
+
+
+Delete:The DELETE method is used to delete a resource specified by its URI
+
+This is gonna delete rhe todods with id:1
+
+fetch('https://reqres.in/api/users/2', {
+method: 'DELETE'
+})
+el deleting bser3a u target what u wanna delete mnel url mainly.....
+
+
+
+
+*)
+   ajax(jquery) get,put,post,delete:
+
+get:
+
+1:create a button first in html
+
+$(document).ready(function(){
+  $("button").click(function(){
+    $.get("demo_test.asp", function(data, status){
+      alert("Data: " + data + "\nStatus: " + status);
+    });
+  });
+});
+
+
+
+post:
+
+1:create a button in html
+
+$(document).ready(function(){
+  $("button").click(function(){
+    $.post("demo_test_post.asp",
+    {
+      name: "Donald Duck",
+      city: "Duckburg"
+    },
+    function(data,status){
+      alert("Data: " + data + "\nStatus: " + status);
+    });
+  });
+});
+    
+
+
+put:
+
+
+$.ajax('myservice/user/1234', {
+    method: 'PUT',
+    contentType: 'application/json',
+    processData: false,
+    data: JSON.stringify({
+        name: 'John Smith',
+        age: 34
+    })
+})
+.then(
+    function success(userInfo) {
+        // userInfo will be a JavaScript object containing properties such as
+        // name, age, address, etc
+    }
+);
+
+
+
+
+delete:
+
+
+
+$.ajax({
+    url: '/script.cgi',
+    type: 'DELETE',
+    success: function(result) {
+        // Do something with the result
+    }
+});

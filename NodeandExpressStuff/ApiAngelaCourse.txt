@@ -1,0 +1,161 @@
+*)
+   in an api url: kel shi ba3d el "?" are parametres that comes with keys and values
+
+example:
+https://sv443.net/jokeapi/v2/joke/Programming?contains=array
+
+This part is called endpoint:
+https://sv443.net/jokeapi/v2/joke/Programming
+This part is called parametres:
+?contains=array 
+
+contains=array   // is a parametre, keys and values b/c they came after "?", kel shi abel bikoun el path lal api
+
+***********************************************************
+
+*)
+  ken fik thot bel weather api key, el parametre units=metric // to get automatically the value as celsius degree
+**********************************************************
+*)
+
+In postman app eza 3ndk api:
+w bdk to easily to test different keys and values as parametres w in organised way... go to+
+1:press on create new
+2:get basic request
+3:add it to a collection
+4:put the api url only the end point bel input box
+5: you can add keys and values tahet el input box directly, w automatically bikoun am yektebon bel url
+w you can turn them off and on as you like bel checkbox
+6: you send the request
+
+advantages of that: tshuf el keys w values in organised way la2anna it is annoying ennak tektebon bel url directly, w to23od tfatish 3a specific one to delete....
+
+w betshuf el request in a json format in organised and clear way also
+
+
+w advantage of using postman huwe enno tsayiv el apis li bdk yehon bi collection, instead of searching for them kel marra later on....
+**********************************************************
+
+*)
+  use google chrome extension: JSOn viewer awesome...
+to see api requests in awesome way
+
+and you can tap on a property name and put copy path in green, to copy bser3a el path on how to access that specific data ahsan ma enta tshufa manually w taamela manually...
+
+**********************************************************
+
+MAKING HTTP REQUESTS IN NODEJS:
+
+1: require https, which is a native module that comes in node  modules automatically
+
+const https = require("https");
+
+2: hot el url taba3 el api in a variable (optional)
+const url = "https..."
+
+3: https.get(url,(req,res) // inside of the orginal get function lal specified route
+
+
+app.get("/",(req,res)=>{
+    res.send("Hello world what is up?");
+    const url = "https://api.openweathermap.org/data/2.5/weather?q=beirut&appid=24a378814964ff5a443bd3fd609a3e0c&units=metric";
+    
+    https.get(url,(response)=>console.log(response.statusCode)); // I am printing the response status code bi my console of the api url
+                  
+    // w simply https.get means kamen we are defining what is gonna happen lamma browser yeb3at request lal server bhal specified route
+      in our case am betba3 el response
+
+})
+
+
+
+
+
+*************************************************************************************************************************************************
+
+app.get("/",(req,res)=>{
+    res.send("Hello world what is up?");
+    const url = "https://api.openweathermap.org/data/2.5/weather?q=beirut&appid=24a378814964ff5a443bd3fd609a3e0c&units=metric";
+    
+    https.get(url,(response)=>{console.log(response.statusCode)
+    
+    response.on("data",(data)=>{
+        const weatherData = JSON.parse(data);
+        console.log(weatherData);
+    })
+    
+    
+    
+    
+    
+    });
+
+
+})
+
+
+
+
+
+EXPLANATION::::::    awal get function simply am thadedle what is gonna happen lama el browser yeb3at request 3al server bel specified route bi                      awal parametre.
+
+                     tene get function kamena it is defining what is gonna happen lamma el browser yeb3at request 3al server houwe w hemil el                      data of the api url li bi awal parametre mhadado!!!!
+
+                     kel shi inside tene get function I am simply converting kel el data te3oul el api url li henne hala2 requested bel server
+                     la Javascript object using JSON.parse(data);
+
+                     then I am printing them bel console as js object
+
+
+Now ba3ed ma hawalet el data la js object, now u can start creating variables that access specific stuff you want :)
+ex: const weather = weatherData.main.temp;
+    ......
+
+*************************************************************************************************************************************************
+
+
+
+HTTP get definition: defines what is gonna happen when el browser yeb3at request 3al server houwe w hemil el data mnel api 3al server!!
+
+fik men hounik thawil el response as js object w to print it in the console or print it in html....
+
+
+*************************************************************************************************************************************************
+
+
+NOTE: you can use res.send(...) only once, but if u want multiple lines to write and send them use res.write("Hello")
+                                                                                                   res.write("world")
+                                                                                                   res.send() //ekhir shi :) btetreka empty
+
+*************************************************************************************************************************************************
+
+app.post("/w", (req, res) => {
+  let cityName = req.body.city;
+  console.log(cityName);
+  const url =
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
+    cityName +
+    "&appid=24a378814964ff5a443bd3fd609a3e0c&units=metric";
+  https.get(url, (response) => {
+    response.on("data", (data) => {
+      const weatherData = JSON.parse(data);
+      const weather = weatherData.main.temp;
+      const icon = weatherData.weather[0].icon;
+      const weatherIcon = "http://openweathermap.org/img/wn/"+icon+"@2x.png";
+
+      res.write("The temperature in " + cityName + " is " + weather+" degree celsius");
+      res.write("<img src="+ weatherIcon+" >");
+      res.send();
+    });
+  });
+});
+
+
+
+summary: 3melna form fiyo data, hal data hiye esem el city, hala2 baa3ed manba3ato hal data 3al server taba3 el route li mhadado as requested men hounik lameton el post w it stored them w accept them , men baada I stored the data mnel form li hiye el city bi a variable with the help of npm body - parse, w hatayta jouwet el url taba3 el api to target el info of that specific city, men baada sewet get request ta7awil kel el data la javascript object w baadena khazanet el info mnel api jouwet variables w baadena I sent them as a response bel post method, enno  ba3ed ma stalamit el city name tred ka response darajit el harara w image icon......
+
+*************************************************************************************************************************************************
+
+
+
+

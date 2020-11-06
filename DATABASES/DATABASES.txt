@@ -1,0 +1,20 @@
+*)
+  SQL:structured query language
+
+NON SQL: Not only structured query language
+
+*)
+  SQL: stores the users or data in a form like a table
+
+ NON SQL(non relational): Data are stored in JSON FORMAT instead of a table
+
+*)
+  SQL are relational: fik tsewe kaza table fiyon data w to connect them together
+
+w bel sql databases u need to define abel shu bdk thot bel table
+
+bel non sql: it is more flexible....
+
+
+*)
+  

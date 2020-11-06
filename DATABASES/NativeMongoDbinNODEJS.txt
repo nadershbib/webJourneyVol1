@@ -1,0 +1,118 @@
+
+To use the normal mongoDB in js just as u u learned in the shell:
+
+1:create project
+2:npm init -y
+3:npm i mongodb
+4:go to npmjs.com, then go to mongodb, and copy the code in the bottom
+
+code:
+**********************************************************
+const MongoClient = require('mongodb').MongoClient;
+const assert = require('assert');
+ 
+// Connection URL
+const url = 'mongodb://localhost:27017';
+ 
+// Database Name
+const dbName = 'myproject';
+ 
+// Use connect method to connect to the server
+MongoClient.connect(url, function(err, client) {
+  assert.equal(null, err);
+  console.log("Connected successfully to server");
+ 
+  const db = client.db(dbName);
+ 
+  client.close();
+});
+**********************************************************
+
+5: u can change the db name in the code
+
+6:node app.js // ro run the server using mongodb 
+NOTE: if it did not connect, open another cmd line and run "mongod" and from main cmd line run it again, it should work
+*************************************************************************************************************************************************
+
+7)
+
+  Copy in npmjs now the code of the "INSERT DOCUMENT" example:
+
+const insertDocuments = function(db, callback) {
+  // Get the documents collection
+  const collection = db.collection('documents');
+  // Insert some documents
+  collection.insertMany([
+    {a : 1}, {a : 2}, {a : 3}
+  ], function(err, result) {
+    assert.equal(err, null);
+    assert.equal(3, result.result.n);
+    assert.equal(3, result.ops.length);
+    console.log("Inserted 3 documents into the collection");
+    callback(result);
+  });
+}
+
+//change the name of the collection , and u can start inserting stuff.....
+*************************************************************************************************************************************************
+ 8: add this code below in step 4 should end like that...:
+
+ insertDocuments(db, function() {
+    client.close();
+});
+});
+*************************************************************************************************************************************************
+
+9: run the code in cmd: node app.js
+
+
+10: now if u go the mongo shell, u can see the new database created and added in ur system by pressing "show dbs"
+
+*************************************************************************************************************************************************
+
+11: now to mainly get access to the database from app.js, copy the code of find documents in npmjs:
+
+const findDocuments = function(db, callback) {
+  // Get the documents collection
+  const collection = db.collection('documents');
+  // Find some documents
+  collection.find({}).toArray(function(err, docs) {
+    assert.equal(err, null);
+    console.log("Found the following records");
+    console.log(docs)
+    callback(docs);
+  });
+}
+
+NOTE: change docs to (name of ur collection) and change const collection to the name of ur collection
+
+yaane hek shakla lezim ykoun:
+
+const findDocuments = function(db, callback) {
+  // Get the documents collection
+  const collection = db.collection('fruits');
+  // Find some documents
+  collection.find({}).toArray(function(err, fruits) {
+    assert.equal(err, null);
+    console.log("Found the following records");
+    console.log(fruits)
+    callback(fruits);
+  });
+}
+
+w to get the documents go to step 4: and replace the end by:
+
+findDocuments(db, function() {
+    client.close();
+  });
+});
+
+*************************************************************************************************************************************************
+CHECK THE DOCUMENTATION FOR MORE STUFF........
+
+*************************************************************************************************************************************************
+
+
+
+
+

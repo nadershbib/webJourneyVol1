@@ -1,0 +1,60 @@
+Node Js: it is a run time environement for js outside the browser, for example for building desktop applications
+
+Install from:nodejs.org
+**********************************************************
+*)
+   To run a js file from cmd using node: go to cmd and be in the directory where that file is and type "node (name of file with extension")
+*)
+   go to cmd, and type:"node"
+  it will let you type directly js code in cmd and run them
+
+to exit you can type: ctrl+c (twice) or ".exit"
+**********************************************************
+*)
+   you can go to nodejs.org/api/ to learn how to use native node modules(node libraries) that could be helpful the whole documentation is there
+***********************************************************)
+   npm package manager are used to get packages and stuff to your code, btekhod ashya already other people build w btestaamlo in your project metel getting random superheroes names w hek osas.....
+
+npm is a package manager for js , it manages the packages you wanna use from other people in a smart way
+
+npm:Node Package Manager
+
+MODULE=PACKAGE=LIBRARY
+
+*)
+    Now to use npm:
+1:go to the dir where your js file is and type in cmd"npm init" this will initialise npm to be able to use it....
+2:they are going to ask you what to name the package, you can name it whatever you want
+3:they ask about description, u can type whatever the heck u want and u can ignore the test command and git repositery if u want, and u can type ur author name
+4:byes2alouk ekhir shi is this ok, type"yes"
+
+NOTE: "npm init -y" // will initialise the npm with default settings, ma daroure yaane tdal tekbos enter w ekhir shi thot yes
+
+5: this whole process will create a packagge.json file in your directory, having all descriptions of your npm packages so far, once u install external packages they will show up in that file :D
+        **********************************************
+
+6:Head over "npmjs.com" to get external npm packages for your project
+
+7: after chosing an npm package, you need to install it byt seeing the command in the documentation and typing it in the cmd in the dir where your project is
+
+//I am doing the superheroes npm example as my first
+
+8: after installing it through the cmd, it will appear in the package.json file in your directory....
+
+9: now you need to type in your js file, the usage which is in the documentation to be able to use it, it is usually a single variable 
+ex: const superheroes= require('superheroes');
+
+
+
+Note:The basic functionality of require is that it reads a JavaScript file, executes the file, and then proceeds to return the exports object.
+     yaane bel step 9, el require function am taamil execuion la hayda el file called superheroes baadena it is exporting kel el functions li      jouweto 3a your file li am teshteghil fi 
+....  In other words, shaghlit el require hiye tsewe imports la kel el exports bi hayda el file in parentheses... fa hek bisir fik testaamil el functions w whatever this npm package has.
+
+
+
+10: now you can use the npm, see the documentation on how to use it in npm :D
+**********************************************************
+
+
+*)
+  To delete npm package: npm uninstall (package name)

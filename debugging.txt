@@ -1,0 +1,38 @@
+for debugging:
+*)
+   open chrome developer tool.
+
+*)
+    step over next function call: ya3ne 5ls byaamil execution la kel el function w binot 3al li baada without ye2ta3 line by line bel function....
+
+step into next function call: bye2ta3 line by line bel ashya li jouwet el function, w eza fi call la function tene birou7 la3nda w kamen step by step....
+
+step out of current function: byaamil execution la kel el function along with the childs function...
+
+example: function hello() {
+                           hi();
+                           bye();
+
+                        }
+
+steo over: 7aynot 3al hi(); eza rje3et hatet step over, byaamela execution 3ade w bi not 3al bye() function...
+step into: 7aynot 3al hi(); eza rje3et hatet step into, hayfout 3al hi() function w y2arjik jouweta step by step shu am bisir....
+step out: byaamil execution la kel el hello() function along with the children.....
+
+*)
+    bel scope panel 3al yamin betshuf el actual values....
+
+*)
+    breakpoints are used to stop the code at a specific time, and start debugging.... you simply press on the number to set a break point...
+
+*)
+    bel watch pannel fo2 3al shmel fik mainly, to watch variables values, aw fik thot typeof (variable) tatshuf el type or whatever......
+
+*)
+    console.error(".."); used to display an error in the console tab.... useful if checking an error
+
+*)
+    you can set conditional breakpoint, to stop the code at specific time if a condition meets ( if for example a variable is>5 or == 10 or whatever u want) right click, then press add conditional breakpoint...
+
+*) 
+   

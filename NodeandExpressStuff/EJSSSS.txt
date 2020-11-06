@@ -1,0 +1,189 @@
+*)
+  var today = new Date(); //built in function
+  today.getDay(); // returns the day of the week indexed
+  
+   saturday:6
+   sunday:0
+   Monday through friday: 1 to 5
+
+*)
+  You need templates, so for example instead of creating multiple html files and sending them as a response you use templating!!!!
+
+IN SHORT EL MAIN USE LA EJS: te2dar teb3at js variables or strings jouwet html elements.
+
+go to: ejs.co
+
+*)
+  To use ejs:
+1:install with npm: "npm install ejs"
+LInk on usage with express:
+https://github.com/mde/ejs/wiki/Using-EJS-with-Express
+
+2: in ur js file:
+app.set('view engine','ejs');
+
+
+3: create a folder esmo"views"
+   hot file juweto ykun 3ndo extension .ejs
+   fik tsami li bdk yeh
+
+4: res.render() is used to render a page, to like compile it and run it....
+
+5: you write juwet el .ejs file html 3ade...
+
+folder:views
+    file:list.ejs (or anything u want)
+
+6: Taten2ol now data m3ayane or a string ykuno bi element m3ayan bi your ejs file: use(<%=(var Name) %>) juwet el element li bdk teb3atlo a string mnel js
+
+example:
+
+
+app.js:var n="ZERO";
+
+list.ejs:<h1> Hello my name is <%=NAME%> </h1>
+
+app.js: app.get("/",(req,res)=>{
+res.render("(name of ejs file)",{(variable name in ejs):(js var)};
+
+ex: 
+
+app.get("/",(req,res)=>{
+res.render("list",{NAME:n});     // output Hello my name is ZERO! ( as h1 text)
+
+}
+IN SHORT EL MAIN USE LA EJS: te2dar teb3at js variables or strings jouwet html elements.
+
+*************************************************************************************************************************************************
+
+to write js codes in ejs file directly:use: <%   %> for each line of js code u need to put them and ur js code is in between
+
+*************************************************************************************************************************************************
+*)
+   To get local date as : FRIDAY,JULY 31  
+ var today  = new Date();
+    var currentDay = date.getDay();
+    
+    
+    var options = {
+
+     weekday:"long",
+     day:"numeric",
+     month:"long"
+    };
+
+    var day=today.toLocaleDateString("en-US",options);
+
+*************************************************************************************************************************************************
+
+*)
+  EZA AM TSEWE RENDER LA EJS FILE, bas one of the variable bel html elements ma3ando at the moment value it is not gonna be rendered and works
+
+ To fix that: btaatiya empty value w u mention it bel get method
+ 
+ men baada bel post method, shi ysir 3nda value el empty variable, btestaamil: res.redirect("/") same route lal get;// el redirect it is gonna redirect now 3al route te3 el get , w now bisir talama sar 3nda value el variable btenzed 3ade bel html element
+
+small ex:
+var i = "";
+get method: res.render("list",{Item:i});    // u mention it
+post method: i=req.body.input;  res.redirect("/"); // now sar 3nda value el i, so u redirect it 3al "/", w betshuf el value and it gets added in html element
+
+NOTE: res.redirect("/"); // deyman direct 3al get method
+
+*************************************************************************************************************************************************
+
+*)
+   Lama tsewe object w el property name hemle ka property value an array.... to refer to that array u refer to it through the property name and not property value
+
+ex:
+
+var i=[1,2,3];
+var object ={
+    arr:i
+}
+console.log(object.arr[1]);  // refering to the array from the property name!!!!! .. out:2
+
+*************************************************************************************************************************************************
+
+*)
+    FIK TEKTOB html codes , bi file m3ayan inside of views bas ykuno .ejs extension, w hal codes li katabton li katabton u can include them bi    file m3ayan bdk yeh..
+
+   It is useful to avoid repetetion w eza bdk tsewe multiple pages, tdal t3id zet el codes....
+
+  ex:  folder: views
+            file:list.ejs
+            file:header.js
+
+     Now kel shi html codes bteketbo bel header.ejs, u can now include in list.ejs
+
+   
+    GO TO list.ejs and type: <%- include("header") -%>  // code to include kel el html code of the header.ejs file bi list.ejs
+
+
+
+useful eza bdk thafiz 3al same consistency of style bi kel ur files, without having to type things again and again and link the styling sheet
+
+*************************************************************************************************************************************************
+
+*)
+  To create modules and export them to your ejs file or any js file to make ur code more organized:
+
+  1:create a js file ex:dates.js
+  2: go to ur main server js file and u require it from there: const dates = require(__dirname+"/dates.js") // btaate el full path so it can be   recognized by js
+
+  3: in dates.js , you need to export the stuff u want , so u can import them in ur main js file by using the require function
+
+   ex: in dates.js: 
+      
+       module.exports = "Hello world"; // exporting a simple thing
+       
+       module.exports.Hello = Hello;   //exporting the function Hello
+       module.exports.Hi=Hi;
+      
+      function Hello(){
+              return "Hello world";
+                   }
+
+       function Hi(){
+
+                 return "HIII"; 
+
+                    }
+
+    in app.js:  const dates = require(__dirname+"/dates.js")
+     
+    Now u can use the exported function in dates.js in app.js since u required them(imported them)
+
+    To use function Hello: dates.Hello();
+    To use function Hi: dates.Hi();
+
+console.log(module.exports) // to see all ur exported stuff if they are correct
+console.log(module) // console the whole module
+
+
+Instead of writing:module.exports.(var name)...
+You can write: exports.(...)=    //without the module 
+
+
+*************************************************************************************************************************************************
+
+NOTE: instead of writing :
+
+exports.hi=hi;
+
+function hi(){
+return "Hello world";
+}
+
+It is better to write:
+exports.hi=()=>{return "Hello world"};  // using variable functions
+
+w to access it bel app.js simply : (name of var that is requiring).hi();
+
+*************************************************************************************************************************************************
+
+
+
+
+
+

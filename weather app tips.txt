@@ -1,0 +1,158 @@
+*)
+    go to openweathermaps.com to get api...
+
+*)
+    go to get started, and copy the api they gave you as an example...
+
+*)
+    fetch that api in ur code, but change after the q= to input.value;
+
+because when we wanna search a city in the input, we want to get the specific information of that city and put in the api request..
+'https://api.openweathermap.org/data/2.5/weather?q='+(input.value)+'&appid=YOUR_API_KEY'
+
+*)
+    get the api key now, and paste it instead of ('YOUR_API_KEY')
+
+*)
+   To access elements and display them in the dom:
+
+after converting the api promise, to a json format using the first then function...
+
+now use the 2nd then function, it mainly trigers the promise if it got converted to a json format... give it a data or json parametre, then inside start creating variables targeting the data in the json format
+
+ex: if in api response:
+      name:"London"; // string
+      main:{temp:290.33,temp_min:299.9,.....} //object
+      weather:Array(1)
+      0:{id:804,main:"clouds",description:"overcast clouds"}; //array of objects
+
+To access these datas values and store them in dom later on:
+
+Always bdk thot el parametre (data) men baada bdk thot
+el property name li fiya el actual value li bdk yeha in brackets within single quotes
+
+var name = data['name']; // eza kenit simple string 
+var tempValue= data['main]['temp']; // eza kenit object u target first el objectName then el property name li fiya el value li bdk yeha
+
+var description= data['weather'][0]['description'];// u target first el array name, then el name of d object li bel array then his property name... eza ken number ma bethoto between single quotes....
+
+
+
+
+or you can use the dot operator which is way easier than putting brackets......
+
+ex:
+var dname= data.name;
+var dtemp = data.main.temp;
+var ddesc =  data.weather[0].description;
+
+
+
+*)
+    now all you have to do, el variables li u selected them el (p) elements, bethotolon now (.innerHTML=) el value taba3 el data li na2ayton w u stored in variabes....
+*************************************************************************************************************************************************
+
+
+HTML/CSS LEARNED FROM THAT PROJECT:
+
+
+1)
+   
+  *:  lama tsewe input box, w taatiya border radius, tatshil el border li baado bel focus mode use the property:
+     outline:none;
+
+  *: eza hatit place holder, w bdk ysir fi space w el cursor tdal ma3o use:
+     padding-left:5px;   // hek betzi7 el paceholder text w el cursor w btetla3 a7la.
+
+
+
+2)
+   *: lama thot lal wrapper class text-align:center;   kell ba2iyit el wrappers inside hayhoto their children bel center kamen;
+      as a fix bel project, tarret 7ot text-align:left; w margin left ktir tayerja3 ybalish el p element men matra7 mabade :p
+
+ 3)
+    *: lal image deyman staamil src property in js, w ma testaamil innerHTML property...
+       w eza mahtoutin henne bi folder, btektob esmo then (/) slash forward esem el image... ex:icons/img5.png;
+
+    *: fik tsewe shi zake, eza bdk thot specific images corresponding la specific data mnel api, li betsewi houwe:
+       1:hal specific data bel api lmawjoude, betkhazena bi variable.
+       2: el image li corresponding hal specific data name, betsamiya 3a esem el data bel api.
+
+       3: btestaamil el image element, w betzid bel source esem el variable li mkhazan fiya el api...
+
+
+     example: bel data 3ndk: icon:009
+              now bethot image esma 009.png
+              now u select the image element w use .src= icon+".png";
+        // so now hayde el image li 3nda zet esem el data is gonna show up... la2an staamalet icon variable(009) w el image is(009)
+
+
+4)
+   in the p element, to make it eno yekhod spaces ad mabado w rawa2 use the property:
+   white-spaces:pre;    
+
+
+5)
+   eza 3melet button wbdk tkabera men maylit el yamin bas w tdal sebte mnel shmel, bdk thot margin-left:0;
+
+6)
+   to use media queries aham shi to not blunder 3a ossit el spaces w hek...
+@media only screen and (max-width:999px)
+
+*************************************************************************************************************************************************
+
+
+To use google maps api:
+
+1: go to contoller.develoopers.goole....
+2: log in
+3: get maps api and places api
+4: get keys, but do not forget to get billing account so they can let you use it....
+5: go to the documentation of places, and copy the script with source code
+6:paste it in ur html, then go get an api key from controller.developper...
+7:paste in the api, istead of api_your key
+8: go create a function in the dom
+9:function autocompletes() {
+  var autocomplete = new google.maps.places.Autocomplete(input);
+}  // input is the input text box, u selected it and stored in the input variable.
+
+
+10: in the api code in html, add on it :    &callback=(name of function that is holding google.maps.Autocomplete)
+                                           in our case: &callback=autocompletes
+
+*************************************************************************************************************************************************
+
+
+Tips when redone:
+
+*)
+    always when fetching an api, ma tensa el (https://)
+
+*)
+   lama tkun bi async function w lama thot variale el value te3ita await fetch('..'); tatestaamil el (.ok,.json(),.status) bddk tkun am testaamil esem el varaible w mish el keyword response.... ex: var hello = await fetch('....');
+                             hello.ok ,hello.json(), hello.status
+
+w when using el ,then function fik as a parametre testaamil (response or json or data)
+
+bas ka general tip w bala waj3it rass, dal am thot esem e variable response ;p
+
+*)
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

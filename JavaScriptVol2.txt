@@ -1,0 +1,409 @@
+*)
+    sweetAlert2 best alert and confirm box library...
+ 
+   Go to :https://sweetalert2.github.io/#icons
+
+and copy the cdn link and the script code to be able to use it!!!
+
+  <link rel="stylesheet" href="sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+
+
+   to use alert box:
+ Swal.fire("Tip: You can increment using arrow up and decrement using arrow down.");
+
+To use confirm box:
+
+  Swal.fire({
+        title: 'Are you sure you want to reset your count?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Okay'
+      }).then((result) => {
+        if (result.value) {
+          x=0;
+          count.textContent=x;
+        }
+      })
+
+bel Title: btektob what kind of a question bdk
+  bet then function btektob el functionality shu bdk ysir eza hat ok...
+
+
+
+
+
+
+*)
+    el fetch function... fetch('https://.....'); hiye b7ad zeta promise, w el conditions te3oula tatkun resolved or rejected maktoubin behind the scenes so ma daroure tektebon, eza el url fata7 w meshe halo betkun resolved eza la2 betkun rejected....
+fetch('...').then(response=>response.json()).then(json=>console.log(json)).
+exp: eza fata7 el fetch url w meshe halo, hawele hal response la a json format then lama thawela tba3le el data in the console.
+
+*)
+   bel arrow function el "()=>" replaces "function ()" specifically el "=>" replaces the keyword"function".
+   eza el function 3nda 1 parametre aw returning 1 statement ma daroure el parentheses or curly braces other than that lezim thoton.
+*************************************************************************************************************************************************
+
+*)
+   To import and export in js:
+   1: create 2 js files
+   2: el file li u wanna import 3le stuff only make him recognised in html 
+      <script type="module" src="app.js"></script>   
+   3: el js file li u wanna export menno, 3al ashya li u wanna export stuff menno hot ablon: export default( only 1 time 3a a function) then       ba2iyit el functions aw variables hot  export simply ablon.
+      
+export default  function double(n){
+
+    return n*2;
+}
+
+export  var hello = 9;
+export function yes(){
+    return "Hello world";
+} 
+        
+
+4: go to the js file u wanna import menno:
+    
+     import double,{hello,yes} from '/hello.js'        // el double lahala hek bethota la2anna export by default w holik between curly braces
+
+5: now u can use them, the functions and variables u have imported
+
+************************************************************************************************************************************************
+
+*)
+   function Boy(name,age){
+     
+             this.name=name;
+             this.age=age;
+  
+                          }
+  exp: El "this.name" or "this.age" el this keyword refers to the object name when u create an object, el .name or el .age here we are defining        the property name to access that specific property value we will pass as argument when creating the object.
+
+       In short: this."whatever u want" , is a way to define the property name to access the property value, so basically fik tsame el property        name li bdk yeh (spiderman, megaman,...) bas huwe 3adatan ahyan shi tsamiya metel el parametre la2an ansab shi tatkun self        documenting.....
+
+    var boy1 = new Boy("NADER",20) // we created an object called boy1 from the constructor Boy and we passed values
+  
+    console.log(boy1.name); // NADER    already hatayna fo2 bel function to access el name property value bado yhot this.name (objname.(property     name which we defined as name ).
+
+
+  So kel shi you pass as an argument when creating an object bikouno basically el property values lal already defined propery names.....
+     
+*************************************************************************************************************************************************
+CLASSES:
+
+To create a class in js:
+ 
+class car{   // creating a class called car
+
+        constructor(brand){    // creating a constructor to inittialise properties
+              
+              this.carname=brand;   // defining a property name to access the property value brand. 
+                    }
+
+
+     }
+
+var car1 = new car("ferrari");  // creating an object or instance of the class car, and we passed as an argument brand name b/c we have it in constructor.
+
+console.log(car1.carname);   //accessing the property value which is brand that we passed as an argument when we created that instance of class
+
+
+                                    ***********************************************************************************
+
+
+you can add methods to the class:
+
+
+class hero{
+    constructor(heroName,age){
+        this.hero=heroName;
+        this.heroage=age;
+    }
+    shoot(){ //added a method
+        return "I am so strong and my name is " + this.hero+" and my age is "+this.heroage;
+    }
+}
+var spiderman = new hero("spiderman",99);
+console.log(spiderman.shoot());
+                           ******************************************************************************************************                  ***********************************************************************
+
+Prototypes:
+
+The JavaScript prototype property allows you to add new properties or functions to object constructors:
+
+ex:
+function hero (name,age){
+    this.name=name;
+    this.age=age;
+}
+var megaman = new hero("mega",190);
+hero.prototype.skill = "blueShots";  //added a new property name with a property value to the object constructor hero
+hero.prototype.shoot = ()=>"Boommmmmm"; // added a function as a property
+
+console.log(megaman.name+" "+megaman.age+" "+megaman.skill+" "+megaman.shoot()); // mega 190 blueshots Boommmmmm
+
+*************************************************************************************************************************************************
+
+Factory functions:
+
+Just like a an object constructor el factory function is something similar,instead of using the keyword this. bethoton el properties jouwet an object.
+
+example:
+
+function boy(name,age){
+    let kid={          // creating an object fik tsami li bdk yeh
+        namee:name,   //defining property names to access property values
+        agee:age
+    }
+    return kid;       //important because we should return everything to the object we created so we can access the properties
+}
+var boy1 = boy("Nader",20);             // creating an object, mbdk el keyword "new"
+console.log(boy1.namee+" "+boy1.agee)
+
+
+So 3ndk 2 ways to build a constructor either u build a normal constructor function object using the keyword"this." or building factory functions
+
+*************************************************************************************************************************************************
+
+Array of promises:
+
+ex1:
+
+const promise1 = Promise.resolve(3);      // u can use Promise.resolve to return a resolved promise or Promise.reject
+const promise2 = 42;                      
+const promise3 = new Promise((resolve, reject) => {
+  setTimeout(resolve, 100, 'foo');                   //setTimeout(function,time) or seTimeout(function,time,parametres)
+});                                                  // as if katabna setTimeout(resolve('foo'),100)
+
+Promise.all([promise1, promise2, promise3]).then((values) => {  // returning all promises values using .all([...]).then((values...))as a handler
+  console.log(values);
+});
+// expected output: Array [3, 42, "foo"]
+
+ex2:
+
+
+const p1 = Promise.resolve("Hello world");
+const p2 = 19;
+const p3 = new Promise((resolve,reject)=>{setTimeout(reject("Hello worldsss"),500,)});
+
+Promise.all([p1,p2,p3]).then(values=>console.log(values)).catch(err=>console.log(err));
+//output:Hello worldsss b/c there is a rejected promise
+
+
+
+
+// this will be counted as if the iterable passed is empty, so it gets fulfilled
+var p = Promise.all([1,2,3]);
+// this will be counted as if the iterable passed contains only the resolved promise with value "444", so it gets fulfilled
+var p2 = Promise.all([1,2,3, Promise.resolve(444)]);
+// this will be counted as if the iterable passed contains only the rejected promise with value "555", so it gets rejected
+var p3 = Promise.all([1,2,3, Promise.reject(555)]);
+
+
+eza am tmari2 normal normal values they are gonna be ignored bas still be printed as fulfilled promises
+eza el promises resolved kelon  aw values 3ade am tmari2 they are gonna be printed
+eza fi at least 1 promise rejected ke shi haysir rejected mainly (fik thot el handler catch ma3 el err parametre to handle the error or to print the rejected value)
+
+*************************************************************************************************************************************************
+var k = "Hello";
+`${k} lol`;          // the ${string} is useful if u want to avoid +" ", like we could write it as k+"lol";
+
+//output: Hello lol
+Note: bdk testaamil ` ` and not ' '
+
+*************************************************************************************************************************************************
+
+OOP concepts:
+
+Encapsulation: used to hide 'sensitive data' from users from the outside! usually like variables!!
+
+*************************************************************************************************************************************************
+In short to achieve encapsulation:
+
+kel shi you pass as an argument lal constructor, betkhazin hal values inside of variables. then you define a property name as function that returns that variable..... w fik tkhale el constructor mayekhod shi, bas tsewe another property name function that takes a parametre w betkhazin hal value bi variable then you return that value bi another property name function :)
+*************************************************************************************************************************************************
+
+
+
+ex 1:
+
+const Book = function(t, a) {
+    let title = t; 
+    let author = a; 
+    
+    return {
+       summary : function() { 
+         console.log(`${title} written by ${author}.`);
+       } 
+    }
+ }
+ const book1 = new Book('Hippie', 'Paulo Coelho');
+ book1.summary();
+ 
+
+ex 2: // 
+
+class Employee{
+    constructor(name){
+       let Name=name;        //storing the value I passed in the constructor in a variable
+       this.getName=()=>Name;  //defining a property name as a function that returns the Name variable which is storing the value I passed in                                  constructor
+                               // so hek basically sar 3ande restriction, w u can't simply change the name value ella mnel constructor
+    }
+
+}
+var employee1 = new Employee("ZERO");
+console.log(employee1.getName()); //ZERO
+
+
+EX 3: using get and set:
+
+class Employee{
+    
+    constructor(){      // empty constructor, not taking any parametres
+       
+       let Name="";     // creating a variable called Name
+       this.setName=(name)=>Name=name;   //defining a property name as a function that takes 1 parametre and store it in Name variable
+       this.getName=()=>Name;           // defining a property name as a function that is gonna return the variable Name which is storing now the                                            value that I passed in the setName property name function 
+
+    }
+}
+var employee1 = new Employee();
+employee1.setName("megaman");
+console.log(employee1.getName()); // megaman
+
+
+
+EX 4: shortest encap example:
+
+class Employee{
+    constructor(name){
+     this.getName=()=>name;
+
+    }
+}
+var employee1 = new Employee("Nader");
+console.log(employee1.getName());
+
+*************************************************************************************************************************************************
+NOTE: enta lama you define a property name mainly bikoun 3ndk 3laya access men barra w fik tghayerla el value, so el trick to achieve encapsulation is that do not define property names in first place ella eza hal property names returns el value li u passed to the constructor aw property name function btekhod parametres w betkhazno juwet a variable
+*************************************************************************************************************************************************
+
+
+
+
+                               ********************************************************************************************************
+*************************************************************************************************************************************************
+Abstraction: used to hide the implementation or logic of something! usually like functions, you hide the implementation of what variables are being used from the inside of the function or anything and you only give the result! so users can not manipulate the variables from inside of the function they only get the result
+*************************************************************************************************************************************************
+ex of abstraction:
+
+function car(brand){
+
+  this.brand = brand;
+   let gearNum =1;
+   let gearFunction = ()=> console.log("the gear is number "+gearNum);
+   console.log(gearFunction());
+}
+var car9 = new car("ferrari");
+
+                               **********************************************************************************************************
+
+Inheritance: one class inherits properties and methods from another class
+
+the class which we are inheriting from is called: Parent class,Super class or base class.
+the class who is inheriting from the parent class is called: child class, sub class or derived class.
+
+example:
+
+
+class animal{                              // parent class or super class
+    walk(){
+        console.log("walking");
+    }
+    sound(){
+        console.log("HAWW HAWWW BOOO BOO");
+    }
+}
+
+class panda extends animal{          //child class or sub class inheriting everything from parent class
+    running(){
+        console.log("bammm");
+    }
+}
+var panda1 = new panda();                // creating an object from the sub class
+console.log(panda1.sound()+panda1.running());       //accessing the methods in the parent and child class
+
+
+
+*************************************************************************************************************************************************
+NOTEEEE::: lamma el parent class ykoun 3ndo constructor w parametres, lama tsewe child class tate2dar testaamil hal properties li being passed as a parametre te3 el parent class bdk testaamil el keyword: super!!
+ex: 
+Parent class: constructor(name){this.Hello=name;}
+Child class:  constructor(name){ super(name); } // bdk thota same parametre bel parent class, w bdk testaamil el keyword "super"ma3 el parametre inside to be able to use the property from the parent class :)
+*************************************************************************************************************************************************
+
+
+
+
+
+
+                                 **********************************************************************************************************
+
+Polymorphism: many forms, when a function is the same in a parent and sub class but the content is different
+
+example:
+
+class animal{
+    walk(){
+        console.log("walking");
+    }
+    sound(){                                            // sound function in parent class
+        console.log("HAWW HAWWW BOOO BOO");
+    }
+}
+
+class panda extends animal{
+    running(){
+        console.log("bammm");
+    }
+    sound(){                                           // sound function in child class, depending now el object u create from which class u will
+                                                          see the proper content, so if u created an object from panda and used sound function u                                                          will see("wooo..") if from animal class u wil see ("HAWW HAWWW");
+        console.log("woooooooooooo waaaaaaaaaaaa");
+    }
+}
+var panda1 = new panda();
+console.log(panda1.sound()+panda1.running());
+                                          *******************************************************************************************
+
+
+Pure function: function that doesn't depend on any external variable it is pure w usually it returns one thing only mish ma3jou2a w doing many things...
+
+example of pure function:
+function priceAfterTax(productPrice) {
+ return (productPrice * 0.20) + productPrice;
+}
+
+example of impure function:
+
+var tax = 20;
+function calculateTax(productPrice) {
+ return (productPrice * (tax/100)) + productPrice; 
+}
+
+*******************************************************************************
+
+NOTE:'this' keyword when you define a property name w testaamela, ktir mhem dawra hon la2anna it is refering lal object enno you are defining property names lahayda el specific object
+
+
+
+
+
+ 
+
+
+

@@ -1,0 +1,103 @@
+*)
+ sql:playground  
+https://www.w3schools.com/sql/trysql.asp?filename=trysql_op_in
+
+*)
+  in sql keep in mind: CRUD
+ CREATE
+ READ
+ UPDATE
+ DELETE
+*************************************************************************************************************************************************
+*)
+  TO create a table:
+
+CREATE TABLE (name of table)(
+
+(column name) (data type)
+(column name) (data type)
+(column name) (data type)
+
+PRIMARY KEY (column name already up)
+
+
+
+
+)
+
+PRMARY KEY: shaghelto to indentify a column name that menno mainly you show the rest of the data that connected lahal specific column name
+in short: unique col identifier that from him we get the records for the whole other cols and data
+*************************************************************************************************************************************************
+*)
+  UPDATE A TABLE:
+
+  TO INSERT DATA AFTER CREATING THE TABLE:
+
+INSERT INTO (table name)
+VALUES(val 1 col 1, val 2 col2,...) // depends on how many columns u have u keep passing values
+
+NOTE: if it was string write as "..."
+
+or fik INSERT INTO (name of table)(specifiy which columns to add in)
+
+*************************************************************************************************************************************************
+*)
+  
+   HOW TO READ DATA:
+
+SELECT * FROM (name of table) // to show everything all cols and their values
+SELECT col1,col2 FROM (bame of table) // to show only col1 and col 2 and their values
+
+SELECT * FROM (name of table ) WHERE (col = ..) // to only show a specific col with a specific value and the rest of it's values
+
+
+*************************************************************************************************************************************************
+ *)
+   how to update  a col with a new value:
+
+
+UPDATE (name of table)
+SET (col name u wanna change) = #
+WHERE (col name ) = #
+
+ex:     id      name      price
+        1       pen        1.20
+
+UPDATE products
+SET price = 0.80
+WHERE id = 1 
+ 
+      id      name      price
+      1       pen        0.80
+
+NOTE:you can use logical operators (and ,or,not) in where statements in SQL:
+WHERE condition AND condition
+WHERE cond OR cond
+WHERE NOT cond
+ 
+*************************************************************************************************************************************************
+*)
+
+TO ADD A COLUMN OR MODIFY IT OR DELETE IT:
+
+ALTER TABLE (table_name)
+ADD (col name) (data type) // to add a column
+DROP COLUMN (col name) // to delete a column name
+
+
+*************************************************************************************************************************************************
+
+*)
+  TO DELETE a whole record :
+
+DELETE FROM (table name)
+WHERE (condition)            ex: WHERE id = 2    this whole record will be deleted and it's other values
+
+*************************************************************************************************************************************************
+FOREIGN KEY : key that links tables together .... check the photo in the folder :)
+
+In ur new table:
+FOREIGN KEY(customer_id) REFERENCES customers (id),
+
+
+         

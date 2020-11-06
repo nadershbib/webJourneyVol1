@@ -1,0 +1,386 @@
+mongoose is a odm: OBJECT DOCUMENT MAP
+
+it allows the nodejs which speaks the language of js object to be able to talk to your mongodb data base which speaks the language of documents and collections
+
+*************************************************************************************************************************************************
+NOTE: to exit mongoshell :"quit()"
+TO USE MONGOOSE:
+*******************
+1:npm i mongoose
+
+2:const mongoose = require("mongoose");
+
+3:mongoose.connect("mongodb://localhost:27017")  // connecting to the mongo server on your local server
+
+NOTE: to create a data base or use a db already in existence put after "27017"  "/(name of db u wanna use or create)"
+
+ex:   mongoose.connect("mongodb://localhost:27017/fruitsDB")
+
+mongoose.connect("mongoose://localhost:27017/fruitsDB",{useNewUrlParser:true});
+// use that in case od depreciation warning....
+
+
+*************************************************************************************************************************************************
+
+4)
+  You need to create a schema: telling mongoose how u will structure ur data in the database and what are the keys and values type pair....
+
+ex:
+
+const fruitSchema = new mongoose.Schema({
+
+name:String,
+rating:Number,
+review:String
+
+});
+
+
+
+5)
+  To create a collection from that structured schema:
+
+const fruit1 = mongoose.model("Fruit",fruitschema); // first argument: telling mongoose we are creating a new collection called Fruit
+                                                      2nd argument : that collection we created, it is gonna follow the structure of the                                                                      fruitSchema
+
+NOTE: always name the collection as singular, automatically mongoose will name it later on when u see it in the shell as plural
+
+6)
+   To add a record in the collection u created:
+
+const fruit = new Fruit({                  // creating a new record having the structure of the schema we did and adding it to the collection 
+                                              "Fruit"
+name:"Apple",
+rating:7,
+review:"Pretty solid as a fruit."
+
+
+});
+
+fruit.save(); // to finally this record to the collection
+
+*************************************************************************************************************************************************
+
+Alright keep in mind something: mongoose.connect("mongodb://localhost:27017/fruitsDB")
+
+This part you see is a promise , so eza meshe hal el server w mafi errors bikun resolved eza la2 bikun rejected
+
+so eza 3atouk error: Unhandled promise rejection, it means ma hatetlo handler which is .catch() lama ykoun rejected w ykun fiyo error el promise.....
+
+CODE THAT FIXED THIS ISSUE FOR ME:
+I simply put this promise inside of an async function and awaited it until it setlles and added a handler which is the .catch() just in case it was rejected and had errors and I added the parsers they wanted....
+
+code:
+
+async function test(){
+ var m = await mongoose.connect("mongodb://localhost:27017/fruitsDB",  {useNewUrlParser: true, useUnifiedTopology: true});
+}
+test().then(console.log("working just fine")).catch(err=>console.log("error it is not working"+err));
+*************************************************************************************************************************************************
+
+NOTEEE: kel ma tsewe run lal server kel ma yerja3 ysewilak record bel code li enta ketbo!
+
+as a solution ba3ed ma sewet run lal server w u added the record remove the: fruit.save()   bel app.js, hek maba2a u add this new record w already huwe sar bel database w no worries
+
+*************************************************************************************************************************************************
+
+You can create many records and to add them all to the collection:
+
+(name of collection).insertMany([(name of object(holding new record),....,...]);
+
+
+
+example:
+const fruit2 = new Fruit({
+  name:"berries",
+  rating:5,
+  review:"meh"
+});
+const fruit3 = new Fruit({
+  name:"cherry",
+  rating:9,
+  review:"just delicious!"
+});
+
+Fruit.insertMany([fruit2,fruit3],function(err){
+  if(err){
+    console.log("there was an error adding the records to the collection!")
+  }else{
+    console.log("added everything successfully!")
+  }
+});
+  
+  
+
+
+*************************************************************************************************************************************************
+
+To find the records in a collection from app.js using mongoose:
+
+(name of colection how u wrote it in app.js).find(function(err,(name of collection how it is writen in db){ // singular and plural
+                                                   
+if(err){console.log(err)}
+else{console.log(fruits)}
+
+});
+
+
+
+example:
+
+Fruit.find((err,fruits)=>{
+  if(err){
+    console.log(err)
+  }else{
+    console.log(fruits)
+  }
+});
+
+
+
+ tatetba3 kel shi bel collection, el records li jouwet a collection:(another way)
+
+NOTE: bi awal method el parametre el tene bel function lezim tsami kif esmo bel database(plural)
+     bi tene method li hay, bi awal parametre u pass {} enno bdk kel collection el objects li fiya(records)
+     bel parametre 7add el "err", fik tsami li bdk yeh hon , ma daroure tsami 3a esem el col bel database....
+
+(name of col how it is writen in app.js).find({},function(err,[any name u want]){
+  
+if(err){...}else{console.log([any name u want]);}
+
+
+example:
+
+Item.find({},(err,foundItems)=>{
+
+    if(err){console.log(err);}
+    else{ console.log(foundItems);}
+
+   });
+
+NOTE: when we refer to foundItems betshufa as an array 3nda objects(record)....
+when u refer la foundItems, make sure ennak tkoun bel else statement domon el function(err,foundItems)...
+
+*)
+  [{obj1},{obj2},{obj3}];
+
+To refer to obj1 : arrayname[0];
+obj2: arrayname[1];
+obj3:arrayname[2];
+
+*************************************************************************************************************************************************
+
+IMPORTANT NOTEEEEE: WHEN YOU CREATE A COLLECTION THAT HAS MANY RECORDS: actually el collection hiye an array w el records byetsayavo jouweta as objects
+
+form:
+[ // collection
+  {......}, //record 1 (object 1)
+  {......}  // record 2
+
+]
+*************************************************************************************************************************************************
+To get only the name of the records in my fruits collection:
+
+Fruit.find((err,fruits)=>{
+  if(err){
+    console.log(err)
+  }else{
+    fruits.forEach(function(fr){   // fruits(how it is spelled in the db) function(any parametre u want)
+      console.log(fr.name);     //fr.name ( targeting only the name )
+    })
+  }
+});
+
+//output: apple
+          kiwi
+          orange
+
+
+*************************************************************************************************************************************************
+
+To avoid each time typing: ctrl+C for closing the connection in mongoose when running the server in cmd
+just type in app.js where u want it to end: mongoose.connection.close();
+*************************************************************************************************************************************************
+
+DATA VALIDATION: simply bethot conditions when creating the schema 3an el keys kif bdk el validation te3on (to be accepted)
+for example eza bdk key esmo rating, w eza bdk yeh to be added bel dataBase only when the value is between 1 w 10 what u do:
+
+const fruitSchema = new mongoose.Schema({
+
+name:String,
+rating:{
+  type:Number,
+  min:1,           // validation condition (minimum:1) and (maximum is 10)
+  max:10        
+},
+review:String
+
+});
+
+
+
+So now if u create a record from that schema structure where the rating is bigger than 10 or less than 1 it will throw an error and the record wont be added to the database
+*************************************************************************************************************************************************
+
+There is the required validator, yaane eza u are creating a record without a specific key mawjoud it is not gonna be accept it and be stored in the db, bas usually eza ma hatit required validator kel shi mainly byenhat law mna2ass keys....
+
+example:
+
+const fruitSchema = new mongoose.Schema({
+
+name:{
+  type:String,
+  required:[1,"YOU DID NOT SPECIFY A NAME WHEN ADDING THIS RECORD!!!!!"]
+},
+rating:{
+  type:Number,
+  min:1,
+  max:10
+},
+review:String
+
+});
+
+// required:[1] yaane true, it is required w eza u created a record without that specific key, it is not gonna be added and error will be shown
+//required[1,"you did not add a name"] second parametre simply specifiying a message to be shown in cmd if you did not added a name....
+
+*************************************************************************************************************************************************
+How to update a record ( adding something to it after already setting it up in the database):
+
+(name of collection how u wrote it in app.js).updateOne({[identifier]},{[actual change]},function(err){...});
+
+example:( adding name key with a value for a record that has a review:'YUMMM YUMMM!!!')
+
+Fruit.updateOne({review: 'YUMMM YUMMM!!!'},{name:"strawberry"},(err)=>{if(err){console.log(err)}else{console.log("UPDATED SUCCESSFULY!")}});
+
+
+
+NOTE:  u can use updateMany, or update....
+*************************************************************************************************************************************************
+How to delete a record completely:
+
+(name of coll).deleteOne([identifer],function(err){....});
+
+example:
+
+Fruit.deleteOne({_id:'5f2b937d37458d2a0806ef09'},(err)=>{
+  if(err){
+    console.log(err)
+  }else{
+    console.log("successfully deleted!!!!");
+  }
+});
+
+NOTE: u can use deleteMany, eza 3ndk nafs el key w el value bi kaza record w bdk daleton kelon..... el deleteOne btetla2at bi awal match only
+
+example:
+
+person.deleteMany({name:"John"},err=>{
+  if(err){
+    console.log(err)
+  }else{
+    console.log("deleted everything!")
+  }
+});
+// will delete all the records no matter how many there are from them that has a name of John!
+
+lama el collection tkun kella empty betshuf: []
+
+*************************************************************************************************************************************************
+
+How to add a record that is following 2 schemas(structures and what keys and values type using):
+
+1: in the main schema (let's say schema 1): add a key(any name) that has a value of (name of schema 2)
+
+2: create a record from schema 2  ( and save it, hek sewit bel tutorial)
+
+3: create a record from schema 1 , now bel key li 3ndo el value of schema 2 , bel value 7ot esem el record (esem el variable) that u created from schema 2 and save it (step 2)
+-------------------------------------------------------------------------------------------------------------------------------------------------
+EXAMPLE:
+*********
+
+//CREATING SCHEMA 2
+
+const fruitSchema = new mongoose.Schema({
+
+name:{
+  type:String,
+  // required:[1,"YOU DID NOT SPECIFY A NAME WHEN ADDING THIS RECORD!!!!!"]
+},
+rating:{
+  type:Number,
+  min:1,
+  max:10
+},
+review:String
+
+});
+
+//ADDING COLLECTION THAT IS FOLLOWING SCHEMA 2
+
+const Fruit = new mongoose.model("Fruit",fruitSchema);
+
+//CREATING A RECORD FROM SCHEMA 2 (STEP 2)
+
+const kiwi = new Fruit({
+  name:"kiwiii",
+  rating:10,
+  review:"AWESOME KIWIII!"
+});
+
+//SAVING IT IN DATABASE
+
+kiwi.save();
+
+//CREATING SCHEMA 1 + ADDING A KEY THAT HAS VALUE OF SCHEMA 2 (STEP 1 )
+
+const Person = new mongoose.Schema({
+  name:String,
+  age:Number,
+  favFruit:fruitSchema
+});
+
+//CREATING A COLLECTION FOR SCHEMA 2
+
+const person = new mongoose.model("person",Person);
+
+//CREATING A RECORD FROM SCHEMA 1+ HAVE THE VALUE(name of variable) OF RECORD THAT WE CREATED FROM SCHEMA 2(STEP 3)
+
+const p = new person({
+name:"Yukinon",
+age:12,
+favFruit:kiwi
+
+});
+p.save()
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+************************************************************************************************************************************************* 
+
+To remove a record, u can use:
+
+findByIdAndRemove([id of record],function(err){.......} );  // id of record is the: _id      bteje by default
+
+example:
+
+const checkItemid = req.body.checkbox;
+Item.findByIdAndRemove(checkItemid,(err)=>{
+  if(err){
+    console.log(err)
+  }else{
+    res.redirect("/");
+  }
+});
+
+*************************************************************************************************************************************************
+
+
+
+
+

@@ -1,0 +1,45 @@
+To use boot strap :
+
+*)
+   getbootstrap.com  then copy the cdn css link, and paste it in your html file
+
+*)
+   eza bdk kel el set up, just paste the starter template.
+
+*)
+   codeply.com // is a good playground that provides frameworks also, u can boot strap there....
+
+*)
+   go to bootstrap, components, and start learning the stuff that are there....
+
+*)
+    in bootstrap, when u put specific classes to elements in html, automatically styles is gonna be applied...
+
+   NAVBAR with items:
+
+    <nav class="navbar">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a href="#" class="nav-link">Hello</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">WORLD</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Life</a></li>
+        </ul>
+
+    </nav>
+
+*)
+       <nav class="navbar navbar-expand-lg> adding this class, will make the items horizontal instead of vertical, and it becomes responsive and become vertical on other tablets, u can control when to become responsive by changing the "lg" check the documentation for that...
+
+   el lg, yaane mabada ktir tatsir responsive eza zagharet netfe el viewport byet7awalo la vertical....
+      md bisir badon aktar taysiro responsive
+      sm kamena badon aktar 3al small phones taysiro responsive mainly...
+
+*)
+    tathot background color btestaamil:      bg-light... primary:blue  danger:red .... shuf el documentation tatshuf el different colors options li 3ndk...
+
+navbar-light/dark : tatet7akam bel type taba3 el nav bar....
+
+navbar-light/dark  bteje combo ma3 el bg-light/dark...
+
+*)
+   
+    

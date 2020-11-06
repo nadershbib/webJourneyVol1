@@ -1,0 +1,189 @@
+
+record: the whole data of a specific id(identifier).
+ex: id:1 name:"zero" age:99;
+
+I created a record // it means the whole ex above
+
+*************************************************************************************************************************************************
+identifier: simply a key and value pair, to get the record of that key and value (whole data)
+
+simpler way tatshufa: "jeble el record la hayda el key w el value"
+
+*************************************************************************************************************************************************
+*)
+  To install:
+https://youtu.be/UmP_X4UuGos
+
+*)
+   DONT FORGET TO CREATE A FOLDER IN C: data 
+   and inside data create a folder: db
+
+*)
+  To use mongoDB:
+
+go to cmd: "mongod"
+go to power shell : "mongo"
+*************************************************************************************************************************************************
+*)
+  to create a data base:
+  in powershell: "use (name of data base)"             // also u can use it to switch to a different database
+  to see the databases: "show dbs"
+  to know in what data base u are currently working:"db"
+
+*)
+  To delete a database: be in the db then: db.dropDatabase()
+*************************************************************************************************************************************************
+*)
+  CRUD in mongo: CREATE,READ,UPDATE,DELETE
+*************************************************
+
+In mongo the word collection is similar to table in SQL
+*************************************************************************************************************************************************
+To create a collection: or to add a record:
+
+*)
+  db.(name of collection).insertOne({type the data u want in keys and values pair})
+
+NOTE: u can use insertMany() // check the documentation for mongoDB
+ex:
+
+db.products.insertOne({id:1,name:"Pen",price:1.20})    // adding 1 record to the collection
+
+To add multiple records:
+
+db.products.insertMany( [             // use insertMany([{...},{...}])
+      { item: "card", qty: 15 },
+      { item: "envelope", qty: 20 },
+      { item: "stamps" , qty: 30 }
+   ] );
+
+****************************************************************************************************************************
+"show collection" or "show tables"// to see the collections in ur current database
+
+NOTE: taterja3 tzid shi 3al collection bdk terja3 tektob zet el code ma3 el keys w el values : db.collection.insertOne({})
+******************************************************************************************************************************
+To delete a collection:
+
+"db.collection.drop()"
+*************************************************************************************************************************************************
+*)
+  Tatshuf el collection te3itak shu fiya data: "db.collection.find()" // gets you the whole records bel collection
+                                               "db.collection.find().pretty()" //to see them in a beautiful manner vertically
+
+  "db.collection.find({id:1})"  // to find in the collection the whole record(datas) corresponding to id:1
+
+  fik thot queries, to find for example a record where el price >1 
+  "db.collection.find({price:{$gt:1} })" // check the documentation to see how to use the operators in query(greater than,less than...)
+
+*)
+  
+ The following example retrieves all documents from the inventory collection where status equals either "A" or "D":
+
+db.inventory.find( { status: { $in: [ "A", "D" ] } } )
+
+*)
+  db.collection.find(Query,options) // el options to specify what data record tshuf, eza ma bdk kel el record that is matching the query
+
+ex: db.products.find({id:1},{name:1}) el 1 simply true, yaane it exists
+//output: {id:1,name:pencil}
+
+*************************************************************************************************************************************************
+
+QUERY COMPARISION OPERATORS:
+Name	Description
+$eq	Matches values that are equal to a specified value.
+$gt	Matches values that are greater than a specified value.
+$gte	Matches values that are greater than or equal to a specified value.
+$in	Matches any of the values specified in an array.
+$lt	Matches values that are less than a specified value.
+$lte	Matches values that are less than or equal to a specified value.
+$ne	Matches all values that are not equal to a specified value.
+$nin	Matches none of the values specified in an array.
+
+*************************************************************************************************************************************************
+NOTE:_id is the primary key on elements in a collection; with it, records can be differentiated by default.
+
+you can over ride it if u wish, el primary key acts as a unique identifier lal whole record
+
+*************************************************************************************************************************************************
+
+To update a record:
+
+"db.collection.updateOne({id or any identifier the record has},{$set: {add keys and values u want now} } )" // updating 1 record either adding new keys and values or modifying an existing key
+
+NOTE: el updateOne() betfatish 3a awal record that matches el identifier bel document w betsewilo update
+
+yaane eza 3ndk multiple identifiers that are the same el updateOne btetla2at bi awal wahad w betghayro
+
+ex:
+db.products.updateOne(
+ {id:1},      // query to get the whole record matching that id and adding something to it
+ {$set: {stock:20} }  
+ )
+
+
+You can totally change a key and value:
+
+db.collection.update({name:"zelda"},{banana:"banana"})   // changing name:"zelda to banana:"banana"  in the collection
+NOTE: ntebih lama testaamela li bisir kel el record lal identifier name:"zelda" birou7 w byeb2a bas banana
+
+To change multiple records, ( bas lezim ykoun 3ndon common identifier):
+ex:
+Let's say we have 2 records having name:"megaman"
+
+db.collection.updateMany({name:"megaman" , {$set: {power:"blueBurst"}})
+
+// added power:"blueBurst" to both records that have the common identifier name:"megaman"
+
+*************************************************************************************************************************************************
+To delete a record:
+db.collection.deleteOne({identifier}) // the whole record will be deleted
+
+u can use deleteMany()...// to delete multiple records having same identifier
+
+*************************************************************************************************************************************************
+To delete a key and value pair:
+
+db.collection.updateOne({identifier},{$unset: {KEY(already in collection):1(true,means to remove it) }})
+
+ex:
+db.products.updateOne({id:1},{$unset: {stock:1}}) // removing key:stock and ofc it's value in the record that has an id of 1
+
+*************************************************************************************************************************************************
+
+EXAMPLE OF CREATING A RECORD THAT HAS AN ARRAY OF 2 OBJECTS:
+
+array of object form:    [  {......},{.......} ]
+
+example:
+
+db.products.insert({
+
+id:2,
+name:"pen",
+price:1.99,
+reviews:[
+         {
+             author:"JAKE",
+             rating:3
+ 
+        
+         },
+         
+          {
+             author:"hikkey",
+             rating:2
+ 
+        
+         },
+         
+]
+})
+
+*************************************************************************************************************************************************
+
+
+
+
+
+

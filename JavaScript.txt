@@ -1,0 +1,576 @@
+JSSSSSSSSSSSSSS:
+**********************
+
+
+
+*)
+    fik te sewe inspect element w trou7 3al console w tekto js codes hounik.w btekbos enter they will run...
+    kbos shift enter to right multiple lines js script codes in console.
+
+*)
+  tatektob js codes bel browser w ma yekhtefo even eza 3melet refresh, rou7 3al sources w hot new snippets w same el file li bdk yeh tkun .js extension, w ktob ur code, w sewe run. hek haydal r code msayav bi hal snippet even eza tsewa refresh...
+
+*)
+   use mozilla to get all the documentations about JS....
+
+*)
+   most important js data types:
+   1: number  (1,2,3);
+   2: string  ("hello world"); 
+   3: boolean (true,false); 
+
+*)
+   prompt("What is your name");  // it asks the user about his name, in a window alert type like...
+   alert("..."); // pop up will give an alert with a message in the browser.
+
+*)
+   lama tektob codak, bel snippet w tsewe run w hek. 
+   fik to retrieve a value of a variable, tektob esem el variable bel console w thot enter bten3ata el value.
+
+*)
+    deyman lama tsewe function, using the function keyword then name then parameters(optional)
+    
+    eza el function ma3anda return type... you simply call it...  test();
+
+    eza 3anda return type... you call it within the console.log(test()); // bas it works both bas hay ahsan.
+
+*)
+   to clear the data in the console, u can either refresh page or clear console...but these  ways won't remove the data stored by the variables    to remove them you need to right click on refresh and press clear cache....
+
+*)
+   always use camel casing when naming variables: var myName="HelloWorld";
+
+*)
+    .length (to count numbers of a string, or number of elements of an array)
+
+*)
+   .slice(betna2e men aya index character ybalish , betna2e lawen baddo y2oss )
+   var name="NaderShbib";
+   name.slice(2(ybalish mnel "d"letter),5(ma yekhod el 5th character w kel shi baada) )  // der ( hayde el string li bteb2a)
+
+*)
+    .toUpperCase(); // change to upper case letters.
+    .toLowerCase(); // lower case mainly.
+
+*)
+    
+    function Hello(bottles[parametre]){
+  
+              var cost=bottles*2;
+              console.log(cost);
+              }
+    Hello(2);  // output 4
+
+*)
+   use parseInt(#); to get a number as an integer. (5.8) bisir (5) metel Math.floor;
+       Math.floor(#); /////////////////////////// hayde eza (5.8) betred (5); betred 3al ra2em houwe zeto, mish 3a a2rab integer.
+
+      Math.round(#);  hayde betsewe round la a2rab integer.... eza (5.8) bisir (6);
+
+*)
+   tathafiz 3al return type variable mnel function hotta jouwet variable...
+   function save(age){
+        return age+10;
+                    }
+                          var haha=save(10); // tsayiv el return type variable juwet a variable.
+
+*)
+   Math.random(); // betred a floating number between 0 and 1 ( 0 inclusive and 1 exclusive)
+
+*)
+   eza bdk random number between 0 and 6 for example betsewe : Math.random()*6;       ( logically ra2em ben 0-1 eza btodorbo bi 6 hayaate floating number between 0 and 6(exclusive)
+
+now eza mabdk yeh floating number simply: Math.floor(Math.random()*6);
+
+now eza bdk el 6 tkun inclusive simply logically betzid +1 soo: Math.floor(Math.random()*6)+1);
+
+*)
+    getting a random number between 2 values:
+
+  function getRandomArbitrary(min, max) {
+
+*)
+    kel shi operators w conditional flow statements are the same te3oul el Java w el C bas zid shaghle:
+
+    ===  ( compares value and type)
+    !==  (////////////////////////)
+
+*)
+   
+  return Math.random() * (max - min) + min;
+}
+                }
+   var savingTheReturnTypeVariable=save(56);
+
+*)
+   Arrays:
+ ***********
+
+   var array=[3]; // declaring an array of undefined elements, manual way:
+var haha= new Array(10); // another way of declaring an array of 10 elements
+array[0]=1;
+array[1]=2;
+array[2]=3;
+console.log(array[1]);
+ 
+var automatic=[1,2,3,4,5,6,7,8,9,10]; // automatic way,filling bser3a el array by values!fik thot strings
+console.log(automatic.length); //.length tatjib el length of an array
+ 
+var stringnumbers=["haha",55,"lol",99]; //array of strings and numbers
+
+
+
+
+// MULTI DIMENSIONAL ARRAYS:
+// automatic way: [  [1,2],[3,4,5]     ]; 2 rows, 1st row 2 columns, 2nd row 3 columns.
+//eample:
+var items = [
+  [1, 2],
+  [3, 4],
+  [5, 6]
+];
+console.log(items[0][0]); // 1
+console.log(items[0][1]); // 2
+
+// To create a defined multi dimensional array example: row[3][3];  tkoun of 3 rows and 3 columns
+var row= new Array(3);                                    
+             for(var i=0;i<3;i++){
+              row[i]=new Array(3);
+                     }
+                 //Now u simply betmaliyon 3ade
+                 // row[0][0]=1;
+                    ….
+                   console.log(row[0][0]);
+                   out:1 
+
+
+ // fik thot empty array w tmaliya:    var array=[];
+   w tatmaliya easily badel ma thot loop w thot array[i]=i;
+                                        fik thot array.push(i); // el push function it adds an element 3a ekhir el array.
+
+                                        to remove elements mnel array loop w ma3 array.pop(); // el pop betshil ekhir element mnel array kamen
+
+
+/.toString() ( to print all the elements of an array using (,) seperator)
+//ex:
+ var haha =[1,2,3,4,5,6,7,8,9,10];
+console.log(haha.toString());
+ 
+//.join("seperator") it print all the values of the array but you can change the seperator in between
+console.log(haha.join("*"));
+
+
+
+//.splice(...) used to add new elements of an array:    and it returns an array of deleted items
+ var fruits = ["Banana", "Orange", "Apple", "Mango"];
+                             **************************************************************************************
+
+
+
+fruits.splice(2, 0, "Lemon", "Kiwi");
+console.log(fruits.toString());
+/*The first parameter (2) defines the position where new elements should be added (spliced in).
+ ya3ne lemon w kiwi bisiro inde 2 w 3 w apple w mango index 4  w 5
+The second parameter (0) defines how many elements should be removed.
+The rest of the parameters ("Lemon" , "Kiwi") define the new elements to be added.*/
+ 
+ 
+//you can use splice() to remove elements without leaving "holes" in the array:
+var fruty = ["Banana", "Orange", "Apple", "Mango"];
+fruty.splice(0, 1);  // Removes the first element of fruits
+console.log(fruty.join("/"));
+     
+ 
+/*The first parameter (0) defines the position where new elements should be added (spliced in).
+ 
+The second parameter (1) defines how many elements should be removed.
+ 
+The rest of the parameters are omitted. No new elements will be added.
+ 
+*/
+
+
+
+
+
+
+
+//The concat() method creates a new array by merging (concatenating) existing arrays:
+var myGirls = ["Cecilie", "Lone"];
+var myBoys = ["Emil", "Tobias", "Linus"];
+var myChildren = myGirls.concat(myBoys);   // Concatenates (joins) myGirls and myBoys
+console.log(myChildren.toString());
+//check w3 schools for more!!!
+ 
+ 
+ 
+//Array sort:
+var points = [40, 100, 1, 5, 25, 10];
+points.sort(function(a, b){return a - b});// sort numbers in ordre small to big
+console.log(points.join("*")); 
+ 
+var poi = [40, 100, 1, 5, 25, 10];
+poi.sort(function(a, b){return b - a}); // sort numbers from big to small
+console.log(poi.join("//"));
+
+
+
+// addition: to loop through the elements of an array using a for loop
+// u use for/of loop: for(variable of iterable)
+// example: 
+var cars = [1, 2,3];
+var x;
+var same="";
+for (x of cars) {
+  same+=x +" "; // this is how you print stuff on same line u create a variable += var + " ";
+
+
+
+*)
+
+forEach loop: 
+
+              arrayname.forEach(function(item,index){
+   
+                              console.log(index,item);   // this will print all the items of the arrays along with the index                
+                                          });
+
+*)
+Search an array for the item "Apple":
+
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+var a = fruits.indexOf("Apple");
+
+
+*)
+   var array=[1,2,3,4,5,6,7,8,9,10];
+
+
+var check=array.find(function(item){
+    if(item===9){
+        return true;
+    }
+});
+
+console.log(check+" "+"is found");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DOM:
+*******
+
+
+    *)
+   fik tektob js script codes inline.... example: <body onload="alert('helloWorld')";>
+   Note: kton hello world one singe quote('helloWorld'); bisir more readable w byefham aktar.... la2an already kel shi within double quotes.
+
+*)
+   fik tekotb bel console : document; // u get the whole html code in the console.
+
+ *)
+    document.firstElementChild;   byaatik el html
+    document.firstElementChild.firstElementChild;   byaatik el head now since el firstElement huwe el html then el firstElementChild te3 el html huwe el head...
+
+*)
+    document.firstElementChild(html).lastElementChild(body la2an el last element child mnel html element); // body
+
+*)
+   a property ma3anda parentheses.
+   a function deyman 3anda parentheses.
+
+
+*)
+    selecting elements in HTML:
+
+    1: document.getElementbyTagName("li");  // it returns an html collection(array like) of the li element.
+                       
+               tatghayir yaane kel el elements of element li, bdk for loop w tghayir kel el elements through indexes
+                                               for(...){   x[i].style.colour="purple"; }
+
+                       aw eza bdk manually specific element, let's say tene wahad... btektob:
+                                   document.getElementByTagName("li")[1]....
+
+    2: document.getElementByClassName("hello"); // returns an html collection of all elements that the "hello" class.
+
+    3: document.getElementById("helloWorld");  //  select a specific elemet with that unique ID.
+
+    4: document.querySelector("possible things u can write[h1,#helloWorld,.helloWorld,li a,li.helloWorld] ");
+                           el querySelector basically fik thadid fiya li bdk yeh(id, classes,elements, specific elements ma3 class name, all the children of a specific parent....); 
+ 
+ IMPORTANT NOTE: .querySelector("..."); // bina2e 1 element only, yaane lama thot class or whatever... betkun mainly am tghayir awal match byetla2at fi only.
+
+eza bdk tna2e kel el elements li 7emlin specific class or whatever badak testa3mil:
+  
+         .querySelectorAll("li bdk yeh");
+
+ Example:
+                 This example returns a list of all <div> elements within the document with a class of either note or alert:
+
+                                   var matches = document.querySelectorAll("div.note, div.alert"); // fik thot comma to seperate stuff.
+
+                                     *****************************************************************
+
+*)
+    PROPERTIES TO KNOW:
+
+  1:  .style.(property)="...";     // to change style of a selected css element // value need to be as a string  // checK DOM style in w3 schools
+ 
+  2:  .innerHTML="...";    // to change the content of an html element or returns the content.
+      .innerHTML="<em> hello</em>"; fik thot el text in between tags m3ayane since el inner property returns kel shi in between law tags.
+     
+      Note: el innerHTML it returns kel shi jouwet in between el opening and closing tag of an element.
+             yaane eza hatit <strong>.... it will return it also...
+
+      eza bdk bas el text content between el element use: .textContent; // it will return the content only.
+
+  3:  .classList; (it returns the classes of that item)
+       
+      combo:  .classList.add("helloWorld"); // this will add a new class to an element.
+              .classList.remove("helloWorld); // this will remove the class helloWorld.
+  
+              .classList.toggle("helloWorld"); // when this is called it means: if the class helloWorld is there, then remove it and if it is not there then add it.
+
+ 
+  4:    .getAttribute("href"); // to get the value of the href attribute of an element
+        
+        .setAttribute( [which attribute u wanna change], [new value of the attribute] ); // tatghayir el value of an attribute.
+
+        .createAttribute("id");  // to create attribute on an element after selecting it.
+          to give it a value you use: .value="...";
+             ex: .createAttribute("id").value="helloWorld";
+             
+           To add that attribute to an element you use: [selectElement].setAttributeNode("[name of the attribute that u created]");
+
+
+                        **************************************************************************************************************
+
+                 TO DO LIST KNOWLEDGE GAINED:
+            *****************************************
+
+*)
+
+   var list=document.createElement('li');   // used to create an Element  <li> ....</li>
+    var text=document.createTextNode("hello world"); // you create a text node w mainly etkhazena bi variable.
+    list.appendChild(text);   // appendChild used to tzid shi between el opening and closing tag of an element.
+                                    result:<li>hello world</li>
+
+*)
+     .focus(); // getting the focus back on an element
+
+*)
+    .click(); // used to triger a button or activate it.
+
+*)
+    To return a value use the method .value; to set a new vale .value=....
+                   // useful on input elements to retrieve and the save the value.
+
+*)
+   
+   when adding an event listener,in the function body when you use "this" it is gonna refer mainly to the button! even if u have used a parametre, it is gonna be refereing to the button mainly.
+
+*)
+    to add an event listener: 1:sewe variable it refers lal button u created
+                              2: variable.addEventListener("[type of event"],[function name, so when the event is called the functions is called]
+                            
+            ex:  button.addEventListener("click",addItems);
+                            // on click, the function addItems is going to be called.
+
+*)
+    To remove a list item from a button:
+   <ul>
+       <li>
+           <button></button>
+          </li>
+   </ul>
+mnel body of the button function:
+
+1st way: this.parentElement.remove();   (this keyword refering to the button, .parentElement[refering to <li> , .remove();[removing li] )
+2nd way :this.parentNode[refering to li].parentNode[refering to ul].removeChild(this.parentNode[li element] );
+
+*)
+           lamma testaamil tenhe el intialiation bi (.classList;) [u are returning an html collection of that class].
+        *)
+            To loop through an html collection,hawella awal shi la javascript collection using:(Array.from)
+                      const array=Array.from(this.parentNode.classList);
+
+              men hon fik to refer to that class name w tektob conditions example: if(array[0]=='blabla'){....};
+ 
+
+*)
+           tatebta3 special characters mnel javascript use( .innerHTML="&...";) not (.textContent=""...);
+        *)
+            .target [btestaamela lamma tkun bi event listener btekhod el parametre te3 el function w bethot .target to refer 3al button)
+            la2an el parametre iyem does not refer directly 3al button he refers to properties w stuff.
+            
+        *)
+            bel addevent listener 3ndk ("mouseover".....) ("mouseleave"....) metel el hover bel css bas mnel js! bdk testaamil hone .target lal parametre to refer 3al button!
+
+       *)
+           .classList.toggle(any class) [ el toggle method basically eza bdk creates that class when a conditions meets(eza button is clicked of if condition)... w eza reji3 kabas 3al button el class gets erased aw eza bdk byekhtefe temporary until el condition meets again!
+
+              ktir mheme hal method eza bdk to style a class when a button is clicked, w terja3 tshil hal style lama yerja3 yekboss el button!
+
+
+*)
+  
+Things I learned after repeating that project:
+
+ when using the toggle method ( hiye btekhla2 bi arda el class, mish lezim tkoun enta kheli2 el class abel) )
+               when using comparision use( text.value=="") w mish el variable==...
+               when using the ("keyup" event listener) betkun mainly el object huwe el text w mish el button [text.addEventListener....]
+              deyman rakiz 3al console w 3a min jouwet min bel elements tataarif leh hek el behavior!
+
+
+         *************************************************************************************************************************************                 *********************************************************************************************************
+
+
+*)
+    .addEvenListener("eventType",listenerFunction);
+
+
+*)
+     fik thot as a parametere of a function another function ....   // it is called Higher order function.
+function multiply(num1,num2)
+{
+
+    return num1*num2;
+}
+function cal(num1,num2,operator)
+{
+    return operator(num1,num2);
+}
+
+cal(2,3,multiply);
+
+*)
+   to debug a code step by step;
+           1:enter in the console debugger;
+           2: enter the function with it's arguments.
+           3: press enter then start pressing in the debug tab on right, step in function, arrow down..
+
+*)
+    to create an audio  in js: var audio = new Audio(URL string);
+    To play the audio: audio.play();
+
+*)
+    OBJECTSSSSSSSSSSSSSSS IN JSSSSSSSSSSSSSSSS:
+    *******************************************
+
+       /OBJECTS IN JS:
+ 
+/*
+Objects are variables too. But objects can contain many values.
+ 
+This code assigns many values (Fiat, 500, white) to a variable named car:
+ 
+var car = {type:"Fiat", model:"500", color:"white"};
+ 
+object name is "car".
+type, model, color henne properties
+Fiat,500,white henne property values
+name:value pairs
+fi ykoun 3andak as a property value a function, ex: fullname:function(){ return haha};
+to access it :  objectname.fullname();
+ 
+ 
+To access an object:
+objectname.propertyname
+objectname["propertyname"]
+ 
+ 
+ 
+*/
+// this keyword, it refers to the owner object(person), eza bdk refers lal main variable name,object name
+var person={firstname:"Nader",lastname:"Shbib",fullname:function(){return this.firstname+" "+this.lastname}};
+console.log(person.firstname);
+console.log(person.fullname());
+
+   
+
+
+*)
+    constructor function: used to initialize objects and their values easily....
+                            for avoiding repetion, if u wanna create multiple objects fast knowing what properties they might have.                    
+      
+              function BellBoy(name,age,workplace){    // function constructor
+                                    
+                        this.name=name;
+                        this.age=age;
+                        this.workplace=workplace;
+                                              
+                                                  }
+    
+                   var BellBoy1 = new BellBoy("tom",20,"florida"); // aham shi testaamil el "new" keyword w 7adda esem el constructor function.w to pass in the values(name,age,workplace)
+
+            Hayda el code equivalent la : var BellBoy1={ name:"tom",age:20,workplace:"florida"}; 
+     
+                    bas kel el fekra eza bdk tsewe many objects 3ndon mainly nafs el properties , to avoid repetion staamil constructor functions...
+
+
+   w fik thot function 3ade bel constructor function:    
+                                                        this.clean=function(){ alert("cleaning....");
+
+w to call it mnel object that u created: BellBoy2.clean();
+                                      
+                                  ************************************************************************************
+
+
+
+
+*)
+    document.addEventListener("keydown",function(event){
+                                                        makeSound(event.key); // event.key betred ayya letter is was pressed 3al keyboard.
+                                                        }
+
+*)
+   when u call a function through a parametre, then it is called "call back function".
+                                                                              .addEventListener("click",function haha(...){..} );
+ el haha function is called a "call back function".
+
+
+*)
+    setTimeOut(function,milliseconds,...) // to set a timeout when you call a function :)
+
+*)
+  ma daroure testa3mil import w export eza kelon bizet el folder lal java scripts files....
+
+*)
+    window.scrollBy([x or horizontally],[y or vertically]); // used to scroll the page.
+             
+
+
+*)
+    to make an alert pop up boolean(ok or no) or mainly it is called confirm box use:
+     confirm("...");
+ 
+ u can put conditions:   if(confirm("save changes")==true{...} else{....};
+
+*)
+   https://keycode.info/        this site is to check the keycodes on keyboard if u wanna use them on js
+
+*)
+   u can use audio:
+  1: var sound = new Audio();
+  2: give it a source:   sound.src="sound.mp3";   // el file bikun 3ndk bel file
+  3: sound.play();  // to play it :)
+
+NOTE: lezim ykun either mp3 aw mp4 tayemshe halo....
+                           

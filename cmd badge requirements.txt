@@ -1,0 +1,4 @@
+Creating an application in Heroku
+Connecting heroku application to github repository
+Setting up auto-deploy
+Viewing and understanding logs

@@ -1,0 +1,205 @@
+Express is a node js framework, it helps you to write less repetetive codes...
+**********************************************************
+Go to expressjs.com and follow the documentation to download express js to your project
+
+1: u need to create a project then initialise it with npm using npm init....
+
+2:type in the cmd "npm install express" to get express as a package in your project and be able to use it
+
+once it is done ofc it will add the node module in your project in the package.json file, so u have 1 dependancy now
+
+NOTE: 7ayalla npm you install, it is gonna be in package.json it shows and tell your project that the project is dependant on these node packages
+
+
+3: see the documentation in the Hello world section in expressjs.com
+
+4: const express = require('express'); // importing all the exported objects in the express module file.to use them in your current file.
+
+const app = express(); //function that represents the express module and creates an express application
+app.listen(3000); // making the express module to listen at a specific port when u get a http request
+
+To stop the execution of the server use: ctrl+c in cmd
+
+
+     ***********************************************
+
+5: you can put an anynomous function and run it in cmd to see it but not in local browser yet
+
+ex: app.listen(3000,()=>{console.log("server started at port 3000")} 
+cmd: node server.js //out:server started at port 3000
+
+**********************************************************
+
+how to get and send requests and display them in the that specific port once opened in the browser by typing: localhost:3000
+
+Note: lezim tkoun 3emil run la ur server mnel cmd then go to browser and type localhost:3000 to see the result...
+
+
+*)
+    the "/" represents the home page or route of your     website
+
+so when u type: localhost:3000/    
+adding the forward slash means u are going to the homepage or route of that website
+
+
+*)
+   when we load up a website, for example google.com 
+   then our browser will send a request to google servers
+   to get some data for that location
+  
+   and google servers when they see that request they will    send a response and that response includes the html,css    and js of the webpage
+
+Note: bihayala website u are accessing, el browser byeb3at request lal server of that site to get the data of that site, then el server of that site btekhod hal request w betred el response as (html,css,js...)
+
+
+
+*)
+    app.get("/",(request,response=>{....});
+
+   el app.get method defines what should happen when   someone makes a request to the home route of the browser    
+
+
+    
+    el awal parametre li ekhdeto el get function ("/")     defines shu ysir lama ysir fi get requests in the home     page, so basically it is targeting the home page
+
+
+
+tene parametre huwe call back function 3ndo 2 parametres request w response shaghleta t7addid shu ysir lama ysir fi request w aya response tred.
+
+
+example:
+
+app.get("/",(request,response)=>{
+
+                     response.send("Hello world"); // the server gonna have as a response Hello world when you open the url with the specific                                                       port
+                                                   // deyman huwe automatically when u open a browser byenba3at request 3al server to get                                                       information and data from that location
+                                                   
+                                                  // you can have that response as html elements .send("<h1>Hello world</h1>")
+
+
+                                 }
+
+*************************************************************************************************************************************************
+Do not forget: get function defines what is gonna happen when the browser sends request to the server when you are in the specific route which u define in the first parametre.
+               
+w ma tensa el request btenba3at automatically 3al server
+*************************************************************************************************************************************************
+ *)
+    You can add multiply routes for example: and to see the response from that server with that specific route, just add the route in the url
+    localhost:3000/contacts   
+    
+app.get("/contacts",(req,res)=>{
+    res.send("ANONYMOUS");
+});
+************************************************************************************************************************************************
+
+Use the nodemon npm module, to avoid everytime whenever u make changes in the responses of the server running the whole file in cmd to see the new results in the webpage
+
+1: type in the dir where your js file is "npm install -g nodemon"
+2: ro run your js file now use "nodemon (name of ur file")
+
+TARAAA: now u dont need to run ur file in cmd to see the new changes :D
+*************************************************************************************************************************************************
+
+*)
+   You can go to express page and check all the functions when it comes to respond and request ...
+   
+
+*)
+   You can send an html file as a response by using : res.sendFile(__dirname+"/(name of ur html file with extension] ).
+   we are using __dirname to print the whole path and ekhir shi refering to our file /index.html, la2ano when u deploy the app
+   lezim tkoun hatit el full path tayemshe l7al it wont work and be recognised eza hatit relative path
+   
+ 
+   el (__dirname) it prints the path wen el file now! so eza u create a js file and console.log(__dirname) el output bikun el dir wen hayda el file mawjoud bi ur computer
+************************************************************************************************************************************************
+
+
+post method often used when you wanna ask the server to accept/store some data which is enclosed in the body request
+
+and it is often used when submitting forms
+
+*************************************************************************************************************************************************
+
+const http = require("http");   // byeje automatically bel node modules when you initialise npm in your project, all u do is require it
+console.log(http.STATUS_CODES);  // printing all the http status codes instead of looking them up online
+console.log(http.METHODS); // print all the http methods that u could use (get,put,post,delete,head,options...)
+*************************************************************************************************************************************************
+
+ <form action="/" class="" method="post">
+       
+     <input type="text" name="num1" placeholder="firstNumber" />
+     <input type="text" name="num2" placeholder="SecondNumber" />
+     <button type="submit" name="submit">Calculate</button>
+
+    </form>
+
+explanation: el action attribute am bihadedle wen bade eb3at hal data when I submit the form, in my case it is the home page"/"
+             el name attributes shaghleton ykhaznoule el input values bi variables esmon 3a esem el value li ha a3tiya lal name attribute
+             ex: name="Hello" value="5"  lama eb3at el data 3al server byenba3ato ka variable hemle el value of the input "Hello=5"
+
+             el button ma3 type="submit" bteb3at mainly kel el data 3al specific route li mhadado bel action attribute shi ekbos 3laya.
+
+
+Hala2 mainly to store kel hal data li am beb3aton 3a specific route ana mhadado, hone btestaamil el POST method li shaghleta to accept and to store the informations li am beb3aton 3al specific route so to do that:
+ex: app.post("/",(req,res)=>{re.send("Hello world")}) //okay akhdeton el post el method  w as a response"Hello world" ba3atet!
+
+NOTEEEE:: el post method it stores them lama ykouno baadon bel request phase, lama ykuno nba3ato as a request 3al server
+
+
+*************************************************************************************************************************************************
+
+
+Now the values that you stored in the input to access them you need to install an npm package called body parser, to do that:
+
+1:npm install body-parser
+2: require the module now you just installed(importing the exports objects and functionalities):
+const bodyParser = require("body-parser");
+
+3:app.use(bodyParser.urlencoded({extended:true})); // letting the app(express application) to use bodyParser
+
+urlEncoded this is used when you wanna parse data that is coming from html forms
+whenever you wanna grab the information that get posted to the server from html form you need to use url encoded
+
+we are gonna add an object called extended, and by setting it to true it allows us to post nested objects, it is something bodyParser needs us sto explicitly declare
+
+*************************************************************************************************************************************************
+
+app.post("/",(req,res)=>{
+    console.log(req.body);                           // I am printing the data from the form who are still requested in the server
+    res.send("I recieved your data thank you!");
+   
+})
+
+
+SUMMARY OF EVRYTHING IS HAPPENING + check Photo: 
+1: I am sending the data in form to a route I specified in the action attribute. "/"(home page in my case)
+2: The server of that route is gonna take them as requested.
+3: Post method targeting the same route, so then targeting the server the data are in....It is gonna accept and store the data while they requested in the server.
+4: from here you can put any response you want of would you like to happen after storing these data in the post method.
+*************************************************************************************************************************************************
+app.post("/",(req,res)=>{
+    console.log(parseInt(req.body.num1)+parseInt(req.body.num2)); // printing in the log num1+num2 which I passed in input values
+    res.send("I recieved your data thank you!");
+   
+})
+
+
+better code:
+app.post("/",(req,res)=>{
+    
+   let num1 =parseInt( req.body.num1);   //num1
+   let num2 = parseInt(req.body.num2);   //num2 
+   let result = num1+num2;
+
+    res.send(`<h1> the result is ${result} </h1>`);   //using string formating instead of +""
+   
+})
+
+
+
+
+
+You can access the data, name of variables that are storing the input values by using .operator and then name of variables that you named using the name attribute and ofc to be able to access them you the bodyParse npm :)
+
+*************************************************************************************************************************************************

@@ -1,0 +1,447 @@
+*)
+   UNDERSTAND BOOTSTRAP RESPONSIVE BREAKPOINTS:
+
+// Extra small devices (portrait phones, less than 576px)
+// No media query since this is the default in Bootstrap
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+
+
+*)
+    Containers to frame your work in boostrap:
+
+    
+      Bootstrap comes with three different containers:
+
+.container, which sets a max-width at each responsive breakpoint
+.container-fluid, which is width: 100% at all breakpoints
+.container-{breakpoint}, which is width: 100% until the specified breakpoint
+
+
+*)
+    Responsive containers:
+
+
+ <div class="container-sm">100% wide until small breakpoint</div> // max width:100% at 576px; kel shi abel el 576 width bikun 100%, men baada no
+<div class="container-md">100% wide until medium breakpoint</div> // max width:100% at 768px; baada no
+<div class="container-lg">100% wide until large breakpoint</div>  // max width:100% 992px;
+<div class="container-xl">100% wide until extra large breakpoint</div> // max width:100% 1140px;
+
+
+EXAMPLE: 
+
+       <div class="container-sm p-3 my-3 bg-primary text-white"> //p-3 for padding my-3 margin
+        <h1>My First Bootstrap Page</h1>
+        <p>This container has a blue background color and a white text, and some extra padding and margins.</p>
+      </div>
+
+
+TIP: use text-(bootstrap colors)  //to change color of text...
+
+*)
+    GRID BASIC ROWS AND COLUMNS:
+
+  example:
+
+ <div class="row">          // btekhla2 row bel "row" class
+  <div class="col">.col</div> // btekha2 column bel "col" class and u let boot strap handle the responsitevity automatically.
+  <div class="col">.col</div>
+  <div class="col">.col</div>
+</div>
+
+for responsiveness:
+
+
+.col- (extra small devices - screen width less than 576px)           
+.col-sm- (small devices - screen width equal to or greater than 576px)  // min width:100% at 576px; kel shi abel el 576 will stack on top ofother 
+.col-md- (medium devices - screen width equal to or greater than 768px) //same
+.col-lg- (large devices - screen width equal to or greater than 992px)  //same
+.col-xl- (xlarge devices - screen width equal to or greater than 1200px)// same
+
+
+Example:          
+
+<div class="row">
+  <div class="col-sm-3">.col-sm-3</div>  3
+  <div class="col-sm-3">.col-sm-3</div>  +3
+  <div class="col-sm-3">.col-sm-3</div>   +3
+  <div class="col-sm-3">.col-sm-3</div>   +3=12   // deyman bada tkun el sum 12, eza 2 rows u can put:8 and 4....
+</div>   
+
+NOTE:deyman kel col btekhla2o eza responsive, bdk thot number ekhir shi, w el sum taba3 hal numbers bi kel col ykun 12
+
+
+
+
+
+*)
+    UTILITIES (BAS MARGIN W PADDING lal badge):
+
+
+width: (.w-25, .w-50, .w-75, .w-100, .mw-100):  25%,50%,....
+height:.h-25, .h-50, .h-75, .h-100, .mh-100 : 25%,50%,75%,100%,....
+
+#:random  number....
+
+.m-# / m-*-#	margin on all sides	
+.mt-# / mt-*-#	margin top	
+.mb-# / mb-*-#	margin bottom	
+.ml-# / ml-*-#	margin left	
+.mr-# / mr-*-#	margin right	
+.mx-# / mx-*-#	margin left and right	
+.my-# / my-*-#	margin top and bottom	
+.p-# / p-*-#	padding on all sides	
+.pt-# / pt-*-#	padding top	
+.pb-# / pb-*-#	padding bottom	
+.pl-# / pl-*-#	padding left	
+.pr-# / pr-*-#	padding right	
+.py-# / py-*-#	padding top and bottom	
+.px-# / px-*-#	padding left and right
+
+
+el bg-colors: bg-(bootstrao color)
+
+*)
+    Buttons: bet7ot el class "btn" mainly, for color w tghatiya kela "btn-(bootstrap color)" , for color bas bas at hover tghatiya kela"
+                                                                                                                      "btn outline-(btstrap color)
+
+button sizes: "btn-lg"(large) , "btn-sm"(small) , el default hiye el medium...
+
+ example:
+
+<button type="button" class="btn">Basic</button> // no color
+<button type="button" class="btn btn-primary">Primary</button> //blue
+<button type="button" class="btn btn-secondary">Secondary</button> //grey
+<button type="button" class="btn btn-success">Success</button> //green
+<button type="button" class="btn btn-info">Info</button> //light blue
+<button type="button" class="btn btn-warning">Warning</button> //yellow
+<button type="button" class="btn btn-danger">Danger</button> //red
+<button type="button" class="btn btn-dark">Dark</button> // black (black, 3a white) (low contrast)
+<button type="button" class="btn btn-light">Light</button> // light (black, 3a white )(contrast 3ale)
+<button type="button" class="btn btn-link">Link</button> // metel el anchor element bas bala underline.
+
+*)
+   NAVIGATION BAR: ( navigation that sticks on the header of the page)
+
+
+  example:
+
+Main structure::::::))
+
+<!-- A grey horizontal navbar that becomes vertical on small screens -->
+
+<nav class="navbar navbar-expand-sm bg-light">  //"navbar-expand-sm" tatkhale mainly el elements horizontal, w to stack over each other lama yousalo 3al breakpoint hasab (sm,md,lg)... // eza bdk yehon vertical mabethot el expand...
+
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link 1</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link 2</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link 3</a>
+    </li>
+  </ul>
+
+</nav>
+
+TIP: useful classes on nav:
+
+1: "justify-content-center" // to make everything in the center
+2:"bg-(bootstrap color) tathot background color
+3:"navbar dark" bethoton el items bi dark conainer w el text bikun white
+4:"active" on <a..> element to highlight it mainly
+5:"navbar-brand" on <a..> element to highlight the website name,project.... men baada bethot el <ul class="navbar-nav"/>
+6:shuf el dropdowns later on on w3 schools
+
+
+
+
+*)
+    NAVS WITH TABS AND PILLS:
+
+MAIN STRUCTURE FOR A SIMPLE NAV:
+
+<ul class="nav">  // nav class
+  <li class="nav-item">  // nav-item on li
+    <a class="nav-link" href="#">Link</a>   // nav anchor
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+</ul>
+TIPS:
+
+1: Add the ."justify-content-center" class to center the nav, and the ."justify-content-end class" to right-align the nav.
+2:Add the ."flex-column" class to create a vertical nav
+
+
+
+TABS STRUCTURE: already betkun el structure mawjoude lama thota
+
+<ul class="nav nav-tabs">   // adding that nav nav-tabs
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a> // to highlight the active element u are on
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+</ul>
+
+Pills: when u toggle them bel tab button, bisiro metel el tabs
+
+<ul class="nav nav-pills">  // add that class nav nav-pills
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+</ul>
+
+
+*)
+    Display content in a modal:
+Basic example::
+
+
+
+<!-- Button to Open the Modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  Open modal
+</button>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        Modal body..
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+*)
+    FORMS::
+
+Main structure: stacked over each other's
+                 
+<form action="/action_page.php">
+  <div class="form-group"> // form-group class is used
+    <label for="email">Email address:</label>
+    <input type="email" class="form-control" placeholder="Enter email" id="email"> //form-control
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="password" class="form-control" placeholder="Enter password" id="pwd">
+  </div>
+  <div class="form-group form-check">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox"> Remember me
+    </label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+INLINE FORM: and it becomes responsive if it is smaller than 576px(stacked 
+
+<form class="form-inline" action="/action_page.php"> 
+  <label for="email">Email address:</label>
+  <input type="email" class="form-control" placeholder="Enter email" id="email">
+  <label for="pwd">Password:</label>
+  <input type="password" class="form-control" placeholder="Enter password" id="pwd">
+  <div class="form-check">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox"> Remember me
+    </label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+*)
+    Cards:::
+
+BASIC STRUCTURE:
+
+<div class="card">
+  <div class="card-header">Header</div>
+  <div class="card-body">Content</div>
+  <div class="card-footer">Footer</div>
+</div>
+
+
+check w3 schools for advanced stuff
+*)
+   List groups:::
+
+BASIC STRUCTURE:
+
+<ul class="list-group">
+  <li class="list-group-item">First item</li>
+  <li class="list-group-item">Second item</li>
+  <li class="list-group-item">Third item</li>
+</ul>
+
+check w3 schools for advanced stuff
+
+*)
+   ALERTS:
+basic structure:
+
+<div class="alert alert-success">  // alert-(bootstrap color)
+  <strong>Success!</strong> Indicates a successful or positive action.
+</div>
+   
+*)
+   Badges: used to add additional information,right next a header or paragraph...(byeshbaho el single rectangular button)
+basic structure::
+
+<span class="badge badge-primary">Primary</span> 
+<span class="badge badge-secondary">Secondary</span>
+
+Tip: u can add "badge-pill" taysir shakla ovale ta2riban horizontally....
+
+*)
+    SPINNERS:: are used to show a circle that is spinning
+
+asic structure with colors:
+
+<div class="spinner-border text-muted"></div> // color 3ade grey bel"text-" bethadid el color, spinner-border btaamil el spinner
+<div class="spinner-border text-primary"></div> // color blue
+<div class="spinner-border text-success"></div> // color green
+
+Tip: "spinner-grow" tatghayir shakla tsir popping circle....
+
+*)
+    DROP DOWNS:: button u press btaatik kaza item that are showing, useful...
+
+basic structure::
+
+<div class="dropdown"> 
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Link 1</a>
+    <a class="dropdown-item" href="#">Link 2</a>
+    <a class="dropdown-item" href="#">Link 3</a>
+  </div>
+</div>
+
+explanation:
+The .dropdown class indicates a dropdown menu.
+
+To open the dropdown menu, use a button or a link with a class of .dropdown-toggle and the data-toggle="dropdown" attribute.
+
+Add the .dropdown-menu class to a <div> element to actually build the dropdown menu. Then add the .dropdown-item class to each element (links or buttons) inside the dropdown menu.
+
+
+*)
+   collapses: useful when u wanna hide content and show them when u press a button::
+
+basic struct:
+
+<button data-toggle="collapse" data-target="#demo">Collapsible</button>
+
+<div id="demo" class="collapse">
+Lorem ipsum dolor text....
+</div>
+
+explanation:
+The .collapse class indicates a collapsible element (a <div> in our example); this is the content that will be shown or hidden with a click of a button.
+
+To control (show/hide) the collapsible content, add the data-toggle="collapse" attribute to an <a> or a <button> element. Then add the data-target="#id" attribute to connect the button with the collapsible content (<div id="demo">).
+
+Note: For <a> elements, you can use the href attribute instead of the data-target attribute:
+
+
+*)
+   ToolTip: when u hover over a text a small pop up text will appear
+
+basic struct using Jquery:
+
+<div class="container">
+  <h3>Tooltip Example</h3>
+  <a href="#" data-toggle="tooltip" title="Hooray!">Hover over me</a>
+</div>
+
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+
+
+*)
+   Carousel: tatzi7 bel images through buttons w ykoun 3ndk slide show
+
+basic structure:::
+TIP: TATEMSHE EL CAROUSE BADK HAL 3 LINKS BI UR HEAD ELEMENT:
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+
+basic structure::::
+
+<div id="demo" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+  </ul>
+  
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="la.jpg" alt="Los Angeles" width="1100" height="500">
+    </div>
+    <div class="carousel-item">
+      <img src="chicago.jpg" alt="Chicago" width="1100" height="500">
+    </div>
+    <div class="carousel-item">
+      <img src="ny.jpg" alt="New York" width="1100" height="500">
+    </div>
+  </div>
+  
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+

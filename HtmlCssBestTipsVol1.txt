@@ -1,0 +1,241 @@
+To position stuff tips::
+*******************************
+position: relative; // element is positioned relative to it's current position
+position:absolute; // element is positioned relative to it's nearest positioned ancestor
+
+first way:
+
+to centre an element juwet a container or body aw even thoto right aw left aw middle right aw middle left aw middle bottom aw perfect centre:
+    1:position absolute; margin:auto;(child)( hay lal body) bas eza normal container 7ot ( position:relative; then lal child element position:absolute w margin auto;)
+    2: eza bdk yeh 3al top centre : right:0;  left:0;
+       bottom centre: right:0;  left:0; bottom:0;
+       right middle centre: right:0; bottom:0; top:0;
+       left middle center: top:0; bottom:0; left:0;
+      
+       perfect center: top,bottom,left,right =0;
+
+
+*************************************************************************************************************************************************
+*)
+  *)
+    height:100vh; // it means 100% of the view port height( user available area of the webpage)
+    height:100%;   // it means 100% of the parent element.....
+
+
+*)
+   lamma tsewe container juweto elements, eza bdk el elements yghatou kello bdk thot el  width w el height:100%; w boom u got it.
+
+
+*)
+   to stack elements fo2 ba3ed eza bala container: just put the 2 elements to position absolute;
+           eza inside of a container: 7ot el container(position:relative;) rja3 hot el child elements(position absolute;)
+
+           To control min fo2 min sta3mil: z-index:#; eza element el z-index akbar men ghayro, lakan bikun faw2o... w bisir fi 3ndk perspective enno wara mahtout el object....
+
+
+
+*)
+   *)
+            deyman el elements juwet el container lama ykuno position absolute; bikuno bel nesbe lal container no matter what!
+            law 3melet positioning la element juwet el container, still li baado haydal absolute bel nesbe lal container w mish elposition             te3o....
+
+
+
+        *)
+            To easily position elements juwet a container, just put the container( position:relative;) w el child element or elements (position absolute); w 3ade t7akam bel position :)
+
+
+
+*************************************************************************************************************************************************
+
+*)
+  specifity or precedence in styling:   Inline style>IDs>Classes, attributes and pseudo-classes >Elements and Pseudo elements.
+
+*)
+   tatfawit container jouwet container easily bala ma u create one:
+1:el container lezim ykoun positioned relative
+2:
+sta3mil el pseudo element  ::before 
+      hot juweto (
+ content='';(taykun empty) 
+ position:absolute; (tayfut juwet el button)
+ top:0; left:0;   (tayfut exactly juwet el button)
+ width:100%;
+ height:100%;  (hek bikun akhad el width and height of the button w fet fiya 3al add)
+ z-index:-1  ( taykun wara el button mahtout, to later on yaate effect w glow effect )
+*************************************************************************************************************************************************
+
+*)
+   another way to position an element in the perfect center of the body:
+     
+      position: absolute; ( bisir mlaza2 3al shmel fo2 )...
+      top:50%;(binazela la tahet 3a noss el body, so sar bel middle left center)
+      left:50%; (bizeta 3a noss el total width, so sarit bel perfect center )
+      hoton:46%; ( for better precision aw thakam enta fiyon!
+
+*)
+  margin: auto; ( short hand property it splits vertically and horizontally equally (vertical and horizontal centering) );
+
+*************************************************************************************************************************************************
+
+TOP 4 fonts and the mood that they convey:
+
+Serif: Traditional,timeless,respectable,formal.
+Sans serif: Easy to read,straightforward, neutral.
+Slab serif: Impactful, Attentio grabbing.
+Modern Serif: Luxurious, high fashion.
+*************************************************************************************************************************************************
+*)
+    to display an item in the ultimate center of a page using flex:
+     body{
+          display:flex;
+          justify-content:center; //along the X-axis of the container
+          align-items:center;     // along of Y-axis of the container
+          height:100vh; // 100% of the view port height,  so since akhada kella now el body haybayno bel ultimate center el items.
+          
+          NOTE: eza mabdk testaamil height:100vh; fik testa3mil:
+
+               html,body{ height:100%;} so basically li bisir lama yenhat html lheight te3o 100% bi male kel el saf7a mainly, w lamma yerja3 yenhat body lheight te3o 100%; he inherits hon el height taba3 el html document ( metel bel definition) 
+                          
+ ya3ne no way tle2e el items bel perfect center eza ma hatit html el height te3o 100%; se3eta libisir el body inherits el height taba3 el html element li huwe 0% so betle2e el item bel middle center fo2 which makes sense...... (html w body by default la2an el height te3on 0%)
+*************************************************************************************************************************************************
+
+*)
+  *)
+    rem unit: it is relative to the font-size of the root element of the default browser; which is by default:16px;
+    
+      so: 1 rem=16px;
+          2rem= 2*16=32px;
+          3 rem= 48px;
+*************************************************************************************************************************************************
+
+*)
+    background: background-color background-image background-repeat  // shorthand property lal background image
+            background-position-horizontal
+            [background-position-vertical]
+             background-attachment; // it means eza bdk el background to scroll aw tdal sebte maybayin shi....
+                                       fixed: betdala sebte, so eza nezil el user betdala sebte w byekhtefo part since am yenzal
+                                       scroll: byenzalo el osas li bel background ma3 el user, so ma bykhtefo w bidalon am yenzalo ma3o.
+
+*)
+   tat5ale el background image bel body responsive:
+
+      background:url('..') no-repeat center center fixed;
+      background-size: cover;
+      height:100%; (lal body hay)
+      overflow:hidden; ( hek eza shi toli3 barat el background maybayin); 
+
+  // aw fik thot background-position:center; badel ma thot center center el short hand property...
+*************************************************************************************************************************************************
+
+*)
+  *)
+    Transform:translateX(#px);  (to move an element along the X axis) (positive values move to the right and negative values move to the left)
+    / /   / / translateY(#px); ( to move an element along Y axis ) (positive la tahet negative la fo2)
+              translate(x,y); (short hand property for X and Y)
+
+
+
+*)
+    Transform:scaleX(#); (it is gonna stretch the items along the X axis)(bala el px)  (1) is the default so to shrink bethot #<1
+              scaleY(#); (stretch the item along the Y axis );
+              scale(x,y); short hand property
+
+
+*)
+    Transform: rotateX(#deg); (rotation along the X axis)
+               rotateY(#deg); (rotation along the Y axis)
+               rotateZ(#deg); (rotation btetkheyela metel el se3a in a clockwise direction) (important!) (negative # betsir anti clock wise)
+               rotate(#deg); (short hand property )
+*)
+  Transform: translate.. rotate.. scale.. (shorthand property)
+
+*)
+    Tatsewe easily a circle: professional way:  1: a3te width:.... 2: padding: # 0;(right and left 0)  3:border-radius:50%;
+
+   aw simply khls: width and height bethoton equal values ( creating a perfect square ) then border-radius:50%; To resize the circle bethot    padding:#; ( short hand property men kel el maylet) 
+*************************************************************************************************************************************************
+
+*)
+  IMPORTANT TIPPP:: eza 3atet animation duration, then bel keyframes ma hadadet 3al 100% shu bdk tshuf, kel ltime lbe2e li mahadadto bisir
+                      dedicated 3a enna terja3 to it's original place...
+
+
+*)
+   Mont serrat font is the best font when dealing with numbers......
+
+*)
+   always when using media queries el ordre badk ykun mnel kbir lal zghir, wa ella they will override each other....
+
+*)
+    
+ to disable on double tap zoom in, specially on phones and tablets use:
+ *{
+      touch-action:manipulation;
+    
+  }
+
+*)
+   Deyman el input w el button elements henne by default inline elements
+
+*************************************************************************************************************************************************
+
+weather app html/css tips:
+
+*:  lama tsewe input box, w taatiya border radius, tatshil el border li baado bel focus mode use the property:
+     outline:none;
+
+  *: eza hatit place holder, w bdk ysir fi space w el cursor tdal ma3o use:
+     padding-left:5px;   // hek betzi7 el paceholder text w el cursor w btetla3 a7la.
+
+  *: lama thot lal wrapper class text-align:center;   kell ba2iyit el wrappers inside hayhoto their children bel center kamen;
+      as a fix bel project, tarret 7ot text-align:left; w margin left ktir tayerja3 ybalish el p element men matra7 mabade :p
+
+
+
+4)
+   in the p element, to make it eno yekhod spaces ad mabado w rawa2 use the property:
+   white-spaces:pre;    
+
+
+5)
+   eza 3melet button wbdk tkabera men maylit el yamin bas w tdal sebte mnel shmel, bdk thot margin-left:0;
+
+6)
+   to use media queries aham shi to not blunder 3a ossit el spaces w hek...
+@media only screen and (max-width:999px)
+
+*************************************************************************************************************************************************
+
+ *)
+     Min-Width
+
+Here is an example of a min-width query.
+
+@media only screen and (min-width: 600px)  {...}
+What this query really means, is "If [device width] is greater than or equal to 600px, then do {...}"
+
+Ya3ne minimum-width:600px;  ka2an am n2oul minimum 600 w kel shi fo2 el 600.    //interval: [600,infinite[
+
+
+*)
+    @media only screen and (max-width: 600px)  {...}
+What this query really means, is "If [device width] is less than or equal to 600px, then do {...}"
+
+maximum-width:600px; maximum ykun 600px w kel shi ta7to... // interval: [0,600]; 
+
+
+*)
+     being specific: min-width:400px; max-width:900px;     // interval : [400,900]
+*************************************************************************************************************************************************
+
+max-width: // in css, hay yaane law shu ma sar , el element baddo ydal bi specific width ana m7adado, law kebrit el sheshe bidal bel specific width li ana mhadadlo yeh
+
+min-width:// in css, hay yaane law shu ma sar ydal bel width li ana mhadado, law zoghrit el sheshe bidal bel width li ana mhadado
+
+*************************************************************************************************************************************************
+
+
+
+
+

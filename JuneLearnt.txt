@@ -1,0 +1,865 @@
+4 june:
+in C:
+*)
+  - Algorithm to iterate through the digits of a number.
+  - Algorithm to reverse a number (12345 > 54321).
+  - Arm strong number
+  - Strong  number
+
+js:
+*)
+    createelement
+    appendChild
+    createTextNode
+    text.value
+    .focus();
+html:
+      <input>
+       div.blabla  (create a div with a class named blabla) shortcut!
+       div.item*3 (create 3 div elements with classes="item")
+
+------------------------------------------------------------------------------------------------------------------------------------------
+5 june:
+
+html and js:
+
+) understanding : create element, appendChild,CreateTextNode
+
+) how to use the input element with couple of attributes(type="text,button,submit...") attributes for it name and value...
+
+) To return a value use the method .value; to set a new vale .value=....
+) .focus(); getting the focus back on an element
+
+) using text-shadow property in css. and animation :D!!!!!!!
+
+
+) how to activate a button using enter keyword! (.addeventlistener("keyup",function(event){...});
+) .click(); method to trigger a button...
+)place holder attribute for the input element and to style it with css...
+
+
+
+
+************************************************************************************************************************************************
+
+6 june:
+in C:
+     *)the pow method... (double el main variable bada tkun) then cast eza bdk int.
+ tip: do not forget tsafir el variables kel mara bel loop....
+      ntebih mnih emta bdk tsafir el variable w treda....
+
+*) better understanding of pointers and how to print array elements from the dereference operator of pointer
+*) pointer to a pointer(int **p;)
+*) pointers and arrays, how to change values of an array or print values from pointers(2 ways  p[1]=.... or *(p+1)=... bi hay am nghayir el address location lama nhot (P+1 ) am bisir pointing 3a tene element index 1
+*) int a[3]; int *p=a; (it points out to the zeroth element of the array). p[] sarit array reference la a[]...
+
+
+*)
+      int *p=array; equivalent to int *p=&array[0];
+      
+      p[0],p[1],p[2]... equivalent to array[0],array[1],array[2];
+      *p  ,*(p+1),*(p+2)... equivalent to array[0],array[1],array[2];
+
+
+************************************************************************************************************************************************
+*)
+ Stack vs heap! stack is basically memory already limited w m7adade by your OS when compiling the program.
+                heap is mainly a large free pool of memory hek keza kebrit ktir el app tamaysir 3anna stack over flow bel stack memory wel app                 crush.
+
+To store variables in the heap memory,you use pointers!
+int *p; //declaration of a pointer that is going to point to the address memory block bel heap memory.(el int *p hone mahtouta bel stack).
+p=(int *)malloc(sizeof(int)); // am nehjoz place bel heap memory size te3o 3a size of an integer unit.
+*p=90; // since hajazna matrah bel heap memory for an integer,now simply am na3ti value using the deference operator.
+p[0]=90; equivalent to *p;
+free(p);  // to mainly free the memory with the space it took.
+
+
+we can declare an integer array using a pointer and put them in heap( memory allocation):
+int *p;
+p=(int *)malloc(10*sizeof(int)); // sizeof(int) is for 1 bock, now lama odroba bi 10, am khazin 10 blocks of integers in d memory.
+you can refer now to the elemnts by: p[0],p[1],.... or *p,*(p+1),..........
+
+
+
+
+
+
+
+*)
+   if(....)
+        awal ligne btekheda
+        kel shi bteketbo 3a tene line ka2an am teketbo now barat el if statement!
+
+
+*) 
+    return ( fik tektob condition hon...) betredelak 1 eza true w 0 eza false.. hek betwafir katibe badel mathot if()..return...
+
+*)
+    ^:exclusive bit Operator ( bi red true eza lra2men wahad sah wahad ghalat el conditions, mamnou3 ykouno tnayneton true wa ella false)
+
+*************************************************************************************************************************************************
+7 june:
+html/css/js:
+   *)
+      .removeChild, .ParentNode.
+       (el remove child lezim tkoun connected 3al parent Node.... ya3ne parentNode.removeChild(element u wanna remove));
+*************************************************************************************************************************************************       
+8 june:
+in C:
+     *)
+        C doesn't allow variable sized array automatic way!  ( bas btemshe eza bas hatet int array[size]; w baadene malet kel value 3ade)
+          int size=5;
+          inr array[size]={1,2,3,4,5};    It won't work..
+          for it to work use: #define size 5
+                              int array[size]={1,2,3,4,5};
+
+html/css:
+    *)
+       display: inline vs inline block;    (inline btekhod space 3a adda, inline block btekhod Block akbar w betkun inline zet e wa2et)
+               
+
+*)To align an element to the left or right instead of using float right or left you use:
+position:absolute;
+right:0px;   ( the element gonna be on the far right of the page just like float right)
+*)
+    The text-align: justify; value stretches the lines so that each line has equal width (like in newspapers and magazines).
+    hahahhahahaa
+    adsjjsadfjas
+    haha. (bhal shakel)
+
+ *)
+ text-transformation:UpperCase; // etc.
+text-indent:50px;  (betzet spaces awal el paragraphs)
+tatet7akam bel spaces ben paragraph w paragraph staamil ( line height:#;) 
+ ben kelme w kelme btestaamil (word spacing:#;)
+  ben haref w haref (letter-spacing:#;);
+*)
+  box shadow, just like the text shadow you can use it but instead of text u use it la box mainly, ma3 zet el arguments w hek.
+  transform:rotate... (tebrema)
+
+Aktariyit el animation : animation: my move(name) 5s (duration) infinite(iteraions) 
+                         @keyframes mymove{
+                                             50%{ box shadow:10 px 20 px 30 px blue};
+                                          }
+
+
+units better understanding:
+ em:relative to the font size of the element.  <div> <span>haha</span> </div>  eza el font lal div:10px; w emta hatet 2em lal div; yaane 2*10=20px bikun el span element!
+
+rem:relative to the font size of the root element~! (root mish yaane parent) root grand grand grand fatther yaane!
+
+
+JS:
+*)
+   when adding an event listener,in the function body when you use "this" it is gonna refer mainly to the button! even if u have used a parametre, it is gonna be refereing to the button mainly.
+*) To remove a list item from a button:
+   <ul>
+       <li>
+           <button></button>
+          </li>
+   </ul>
+1st way: this.parentElement.remove();   (this keyword refering to the button, .parentElement[refering to <li> , .remove();[removing li] )
+2nd way :this.parentNode[refering to li].parentNode[refering to ul].removeChild(this.parentNode[li element] );
+
+*)
+   .textcontent='';  (to add between the opening and closing tag of an element a text);
+   
+   .classList.add('blabla); (to add a class for an element) ( or u can simply use the .setAttribute("class",blabla);
+
+**) kel ma tshuf functions with a parametre, el parametre refers indirectly to the object mainly!
+-----------------------------------------------------------------------------------------------------------------------------------------------
+            
+
+9 june:
+      
+        *) opacity:1(100%) 0.9(90%).....; 
+        *)
+           lamma testaamil tenhe el intialiation bi (.classList;) [u are returning an html collection of that class].
+        *)
+            To loop through an html collection,hawella awal shi la javascript collection using:(Array.from)
+                      const array=Array.from(this.parentNode.classList);
+
+              men hon fik to refer to that class name w tektob conditions example: if(x[0]=='blabla'){....};
+                    
+        *)
+           tatebta3 special characters mnel javascript use( .innerHTML="&...";) not (.textContent=""...);
+        *)
+            .target [btestaamela lamma tkun bi event listener btekhod el parametre te3 el function w bethot .target to refer 3al button)
+            la2an el parametre iyem does not refer directly 3al button he refers to properties w stuff.
+            
+        *)
+            bel addevent listener 3ndk ("mouseover".....) ("mouseleave"....) metel el hover bel css bas mnel js! bdk testaamil hone .target lal parametre to refer 3al button!
+
+       *)
+           .classList.toggle(any class) [ el toggle method basically eza bdk creates that class when a conditions meets(eza button is clicked of if condition)... w eza reji3 kabas 3al button el class gets erased aw eza bdk byekhtefe temporary until el condition meets again!
+
+              ktir mheme hal method eza bdk to style a class when a button is clicked, w terja3 tshil hal style lama yerja3 yekboss el button!
+
+       *)
+          to justify items horizontally:      justify-content:flext-start;    (check flexbox from css tricks later on);
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+11 june:
+       *) 
+              repeated the to do project from scratch, things learned:
+              
+               when using the toggle method ( hiye btekhla2 bi arda el class, mish lezim tkoun enta kheli2 el class abel) )
+               when using comparision use( text.value=="") w mish el variable==...
+               when using the ("keyup" event listener) betkun mainly el object huwe el text w mish el button [text.addEventListener....]
+              deyman rakiz 3al console w 3a min jouwet min bel elements tataarif leh hek el behavior!
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+12 june:
+       *) 
+             <pre> ....</pre> pre formatted text basccially kel shi bteketbo juwa will be represented exactly on the browser ma3 el spaces w el i                bdk yeh...
+
+        *)
+            Tatsewe an image with clickable areas:
+           
+            1: create an <img ..... usemap="#workmap" >    (add the usemap attribute=#...)
+            2: createa map ( <map name="workmap" )(put the same name of usemap attribute in name attribute of map)
+               map element is used to define an image with clickable areas.
+            3: create areas :( they are used to create the clickable area,, along with the size of the area..)(use shape tat7adid aya shape then                the coords attribute tat7adid el size men kel side of the shape, w el href attribute eza kabas 3al area yrou7 3a matra7 tene...)
+
+                                     <area shape="rect" coords="34,44,270,350" alt="Computer" href="computer.htm"> 
+                                     <area shape="rect"coords="290,172,333,250" alt="Phone" href="phone.htm">
+                                     <area shape="circle" coords="337,300,44" alt="Cup of coffee" href="coffee.htm">
+
+                                      </map>
+
+            
+         *)
+             ARIA: Accessible Rich Internet Applications. it is basically set of attributes added to html elements that define ways to make web             content and applications accessible to users with disabilities who use assistive technologies (AT). When accessibility issues cannot             be managed     with native HTML, ARIA can help bridge those gaps.
+
+*************************************************************************************************************************************************
+13 june:
+                kel shi btestaamlo mainly 3al parent element lal properties of flex:
+*)
+    To use the flex box: the parent element need to be set to (display:flex);
+
+*)
+    fik tethakam kif ykuno el child elements mahtoutin, bethot lal parent element ( flex-direction:column,row,reverse-column,.......)
+
+*)
+   flex-wrap:wrap;  ( hay eza el user resized el browser byen3amalon resize hasab el browser el flex tems).... w eza mbdk bethot ( no wrap):
+
+*) 
+   The flex-flow property is a shorthand property for setting both the flex-direction and flex-wrap properties.
+   example: flex-flow: row-wrap;
+*)
+   The justify-content property is used to align the flex items:(along the whole container)
+   justify-content:center; ( bel centre byenhato)
+   justify-content:flex-start; (byenhato awal el container el elements)
+   justify-content: flex-end;  (byenhato ekhir el container)
+   justify-content: space-around; (byenhat spaces between the elements)
+
+*)
+   The align-items property is used to align the flex items.:  ( metel el justify-content,not along the whole container)
+   align-items: center;
+   align-items: stretch;( Aligns flex items along the cross axis of the current line of the flex container.)(stretch lal elements 3a kel el    container) w hiye el default.
+   align-items: flext-start,flex-end; ( metel el justfiy..)
+   align-items: baseline;
+
+
+
+*) difference between align items w justify content:
+   el justify content: bethakam bel alignment of the items along kel el container! (betshuf el stretch 3ade)
+                       update: justify-content is along the X axis of the container...
+   el align items: btethakam bel alignment of the elements along the cross axis of the current line.(mabetshuf stretches shi taamela).
+                      along: the Y axis of the container!!!!!!!!!1
+
+*)
+    1 : eza hatit div container w hatit divs(child elements) juweto, eza bdk el background color te3 el parent element ye2ta3 w yfout bel child
+    bdk thot mainly lal child elements a margin!!! la2anno bala margin el background color te3 el parent am ye2ta3 3al add fiyon so ma bibayin,     so lama ta3te margin basically betkoun am tkhale el child basicall ysiro juwet el background color te3 el parent element... so el background     color now bikoun am ye2ta3 men faw2on since they are in now :)...
+     
+    2: tatghayir kel el child elements mnel parent element :
+                                                               1st way:  .flex div{..}
+                                                               2nd way:  .flex > div{...}
+     
+   3:line height eza staamalta 3al child elements men juwa betkun mainly am tethakam bel stretch vertically 3ndon within the container.
+
+*)
+    The align-content property is used to align the flex lines. ( el line te3 kel element men tahet,axe des X eza bdk);
+    kel shi align content betkun am tethakam bel behavior when the user resizes the screen kif ykuno positioned el items.
+   
+    align-content:space-between; (when the user resize the browser, byen3amal resize lal child elements bi tari2a yenzat spaces in between la tahet 3abel ma ykuno ekhir child elements 3a sewet el container ekhir shi).
+                                                                                              
+    The "align-content: space-around;" displays the flex lines with space before, between, and after them... el space between just basically im     between.
+
+   The "align-content: stretch;" stretches the flex lines to take up the remaining space (this is default):  (metla metel el align-items:    stretch); kamena el defualt stretch....
+
+    eza hatit align content aw items :strecth; w mse2be 3ate height lal elements maha tezbat la2an bi ma eno 3ate fixed height maha te2dat tsewe stretch( yetghayar el height to fill the container).
+
+
+
+  align-content:flex-start aw flex-end; zet lshi wen he resizes the browser bikuno aligned ya fex start ya flex end... 7atta bala el resize bikuno mahtoutin fex start aw flex end!
+
+*)
+    Important: To put all the items in the perfect centre of the parent container ( metel el centre du cercle),put:
+                 
+                    justify-content:center;
+                    align-items:center; 
+                   // TADAAAAAAAAA haykouno bel perfect centre el rayon men kel el maylet is equal.
+
+*)
+     to sort the child elements metel mbdk tsaamil el order property!
+                     <div class="flex-container">
+  <div style="order: 3">1</div>
+  <div style="order: 2">2</div>
+  <div style="order: 4">3</div> 
+  <div style="order: 1">4</div> number one:4...
+                           </div>     // 4 2 1 3
+
+
+*)
+    The flex-grow property specifies how much a flex item will grow relative to the rest of the flex items.
+     <div class="flex-container">
+  <div style="flex-grow: 1">1</div>
+  <div style="flex-grow: 1">2</div>
+  <div style="flex-grow: 8">3</div>
+</div>   // hajmo lal 3rd elements 8 times hajem el awal w el tene haykun.
+
+*)
+     The flex-shrink property specifies how much a flex item will shrink relative to the rest of the flex items.
+     default is 1.
+     
+      Do not let the third flex item shrink as much as the other flex items:
+
+<div class="flex-container">
+  <div>1</div>
+  <div>2</div>
+  <div style="flex-shrink: 0">3</div>
+  <div>4</div>
+
+*)
+      The flex-basis property specifies the initial length of a flex item.
+
+      Set the initial length of the third flex item to 200 pixels:
+
+<div class="flex-container">
+  <div>1</div>
+  <div>2</div>
+  <div style="flex-basis: 200px">3</div>
+  <div>4</div>
+</div>
+     
+
+*)
+    The "flex" property is a shorthand property for the flex-grow, flex-shrink, and flex-basis properties.
+   
+         Make the third flex item not growable (0), not shrinkable (0), and with an initial length of 200 pixels:
+
+<div class="flex-container">
+  <div>1</div>
+  <div>2</div>
+  <div style="flex: 0 0 200px">3</div>
+  <div>4</div>
+</div>
+
+*)
+     The align-self property specifies the alignment for the selected item inside the flexible container. (metel el align items bas hay epecific      la each flex item)
+
+     The align-self property overrides the default alignment set by the container's align-items property.
+
+   align the third flex item in the middle of the container:
+
+<div class="flex-container">
+  <div>1</div>
+  <div>2</div>
+  <div style="align-self: center">3</div>
+  <div>4</div>
+</div>
+
+
+
+*************************************************************************************************************************************************
+
+14 june:
+
+*)
+   fik mnel body thot: text-align:center;  tatkhale kel el items juweto ykuno bel centre, w eza ma keno hot display:inline-blcok;
+*)
+    Transform:translateX(#px);  (to move an element along the X axis) (positive values move to the right and negative values move to the left)
+    / /   / / translateY(#px); ( to move an element along Y axis ) (positive la tahet negative la fo2)
+              translate(x,y); (short hand property for X and Y)
+
+
+
+*)
+    Transform:scaleX(#); (it is gonna stretch the items along the X axis)(bala el px)  (1) is the default so to shrink bethot #<1
+              scaleY(#); (stretch the item along the Y axis );
+              scale(x,y); short hand property
+
+
+*)
+    Transform: rotateX(#deg); (rotation along the X axis)
+               rotateY(#deg); (rotation along the Y axis)
+               rotateZ(#deg); (rotation btetkheyela metel el se3a in a clockwise direction) (important!) (negative # betsir anti clock wise)
+               rotate(#deg); (short hand property )
+*)
+  Transform: translate.. rotate.. scale.. (shorthand property)
+
+*)
+    Tatsewe easily a circle: professional way:  1: a3te width:.... 2: padding: # 0;(right and left 0)  3:border-radius:50%;
+
+   aw simply khls: width and height bethoton equal values ( creating a perfect square ) then border-radius:50%; To resize the circle bethot    padding:#; ( short hand property men kel el maylet) 
+                                                  
+
+    
+
+*)
+    A transition is basically when element transform from a state to a state (start to end state)
+    An animation you can control in it the properties and values at specific times(keyframes) during the animation duration( in transition u can not)
+
+
+*)
+    lama thot hover effect( pseudo selector 3al element :hover) ( el hover acts as a transition hon)...
+
+    tatkhale el property bel hover tetshaghal aw la2 aw tathadid el duration te3a:
+    bet7ot bel element selector(not el hover) property( transition: (esem el property li bel hover) (duration of transition tatshuf el full     EXACT property value in seconds),..) fik thot kaza     property tetshaghal mnel transition by seperating them by commas...
+
+
+   eza bdk kel el hover properties ykun 3ndon specific time mwahad btestaamil: transition:1s;  (kelon badon 1s tatshuf el values li hateta)
+
+
+  transition:( name of property li bel hover) ( duration lal transition tatshuf el exact value li hateta) (delay time) (timing function)
+
+ timing function metel: ease in( betbalish slow then gradually speed up) 
+
+
+
+
+
+
+*)
+    Animation essentials:
+ to use animation 3a element:
+1: animation-name:###... (bel element style)
+2: animation-duration:###... (bel element style) ex:3s
+
+
+3: men bara : @keyframes (animation name)  {
+                                              from{....}  ( men 0s bade shuf specific values)(it gradually increase tatousal lal "to")
+                                              to{....}    (in other words 3al exact animation duration time(3s) bade shuf el values) 
+                                            }
+
+
+
+*)
+    @keyframes (animation name) {
+                                     0%{...} equivalent to "from{...}"
+                                     50%{...}      [50% mnel animation duration, yaane eza animation duration 3 s, bade shuf at 1.5s specific                                                    values while gradually increasing from 0s)
+                                     100%{...} equivalent yo "to{..}"  (3al animation duration time(3s) bade kun sheyif specific values)
+                               }
+
+===============
+ NOTEEEE: kel keyframe betkun relative lal element current position w state!!! mish yaane eza 3al 50% sar bi position m3ayane el 100% ha tet7arak relative lal position te3 el 50%....  kel keyframe relative lal current position, el 100% hatet7arak relative lal element position!
+===============
+
+
+*)
+   animation-fill-mode:  (btethakam ba3ed el animation ma tekhlas shu ysir bel element eza yeb2a ma7alo aw yerja3 matrah ma ken)
+   animation-fill-mode: forward; ( byenhat el element 3a ekhir shi wen wossil bel animation, bidal sebit ma7al ma kholsit el animation)                                   backwards;( eza hatit bel @keyframe from{..} w hatit position, el backwards property betkhale el element ybalish men hal current specific position) tamaykun 3ndk pop up( tshufo bi ma7alo abel 3al rawa2) staamil animation-delay:#s;
+                         both; ( does the two backwards w forwards)
+
+
+
+
+*)
+    animation-delay:#s; ( btaamil delay lal animation la specific amount of time 3abel ma tbalish);
+
+*)
+    animation-iteration-count:# ( how many iteration u want for the animation)
+                              infinite (forever bten3ad)
+
+*)
+    animation-direction: reverse( betbalish mnel to baadena lal from, bel eleb)
+                         alternate( betbalish mnel from lal to baadena mnel to lal from )
+                         normal ( mnel from lal to 3ade)
+
+*)
+   animation-timing-function: ease; ( el default)
+                              ease-in ( betbalish slow baadena speed)
+                              ease-out(opposite of ease-in)
+                              eza bdk ur own timing function btestaamil "cubic beizer(#,#,#,#)" tataarif thot el values rou7 3al site cubic                               beizer aw tataarif mainly kif testaamela rja3 hdar the NetNinja animation playlist.
+
+*)
+    eza hatit multiple elements 3andon zet el class: to style a specific element:
+                                                                                   .cloud:nth-child(2){    [refering to the 2nd element having a                                                                                                          class called"cloud"
+                                                                                                         }
+                              linear( constant speed); 
+
+*)
+   animation: (animation name,animation duration,animation delay(optional),animation timing function, animation iteration count,animation fill mode).
+
+
+*************************************************************************************************************************************************
+
+15 june:
+        *)
+            eza bdk 2 items ykuno fo2 ba3ed, 7otton tnayneton position:absolute;
+        *)
+           eza bdk container to fill all the page: width:100%; w btet7akam bel height kif ma bdk;
+
+        *)
+           to stack elements fo2 ba3ed eza bala container: just put the 2 elements to position absolute;
+           eza inside of a container: 7ot el container(position:relative;) rja3 hot el child elements(position absolute;)
+
+           To control min fo2 min sta3mil: z-index:#; eza element el z-index akbar men ghayro, lakan bikun faw2o... w bisir fi 3ndk perspective enno wara mahtout el object....
+
+
+
+        *)
+            deyman el elements juwet el container lama ykuno position absolute; bikuno bel nesbe lal container no matter what!
+            law 3melet positioning la element juwet el container, still li baado haydal absolute bel nesbe lal container w mish elposition             te3o....
+
+
+
+        *)
+            To easily position elements juwet a container, just put the container( position:relative;) w el child element or elements (position absolute); w 3ade t7akam bel position :)
+     
+           
+*************************************************************************************************************************************************
+16 june:
+
+
+*)
+    lamma tsewe container juweto elements, eza bdk el elements yghatou kello bdk thot el  width w el height:100%; w boom u got it.
+
+*)
+    eza hatit class. w bel selector hatet hal class (.#) eza rje3et hatet hado (.##) betkun am tsewe toggle lal class,so basically lama tekboss 3al class u are going to toggle that class( it works metel button) .class.toggle{......};  w shi terja3 tekbos 3le betredo metel ma ken :) 
+
+*)
+    perspective:#px; ( btaate 3d perspective, eza ma bdk 3d perspective mabethota, kel ma tkun a3la kel ma taate effects 3d aktar)
+
+************************************************************************************************************************************************
+17 june:
+*)
+    to centre an element juwet a container or body aw even thoto right aw left aw middle right aw middle left aw middle bottom aw perfect centre:
+    1:position absolute; margin:auto;(child)( hay lal body) bas eza normal container 7ot ( position:relative; then lal child element position:absolute w margin auto;)
+    2: eza bdk yeh 3al top centre : right:0;  left:0;
+       bottom centre: right:0;  left:0; bottom:0;
+       right middle centre: right:0; bottom:0; top:0;
+       left middle center: top:0; bottom:0; left:0;
+      
+       perfect center: top,bottom,left,right =0;
+
+
+*)
+
+    specifity or precedence in styling:   Inline style>IDs>Classes, attributes and pseudo-classes >Elements and Pseudo elements.
+
+*)
+   page layout: Header,Navigation menu, main content, contens aside,footer.
+    
+
+
+
+*)
+    transition: all;  (tatshaghil kel el properties bel hover pseudo class)
+
+
+*)
+    pseudo class: describe a special state of an element ( :hover,:visited,:active,:focus...)
+    pseudo elements: change an a part of an element (::firstline(tghayir el first line) ::first-letter(tghayir el first letter) ::before(The ::before pseudo-element can be used to insert some content before the content of an element.)::after(The ::after pseudo-element can be used to insert some content after the content of an element.)
+
+*)
+    grouping and nesting selectors: to style multiple elements in css u just seperate them by a comma.... h1,h2,h3,h4{...}; 
+   same thing with ids or whatever the thing u want: #hello,.helloworld{...};
+   styling chilidren of an element: ul li{...};  or ul > li{.....};
+
+
+*)
+   el <form>   (container to collect user input informations) 
+<label for="firstname">First name</label><br>      (used for present simple text, but it is used for people who use screen readers...)         
+<input type="text" id="firstname">
+<input type="submit" value="submit" />     (button to submit the form.....)
+      
+   </form>
+    
+
+
+
+Important:
+
+*)
+    to reload an html automatically every specific amnt of time:  <meta http-equiv="refresh" content="2" />   (will reload every 2s)
+
+*)
+    to delay an animation between iteration a specific amnt of time:
+
+    1: calculate the original animation duration time ( ex:1s)
+    2: calculate delay between each iteration ( ex:2s)
+    3:calculate total: add Og animation dur. + delay : 1+2=3s
+
+    4: calculate now 1s is how much from 3 seconds in percentage? 
+       1/3: 33.33% !
+
+    5: @keyframes animation{
+
+                    33.33%{.....enter ur animation} ( it will last 1s, since 33.33% from 3s is 1s)
+                    100%{....same animation as above) ( now it is gonna be delayed 2s, since we put the same animation of 33.33 in 100% so it's                                                       gonna freeze until 2s)
+                        } 
+
+*)
+    fik thot kaza text shadow wara ba3ed: text-shadow: -3px -3px 3px green, 3px 3px 3px red;
+
+*************************************************************************************************************************************************
+
+18 june:
+
+*)          
+    li a.active {               (by putting .active, betkhale el navigation matrah ma huwe mawjoud mdaweye)
+  background-color: blue;
+  color: white;
+}                              
+
+*)
+   to style and do navigation menu:
+   1: create a container (style ykun width:100% ; yghate kel el width of the screen)
+   2: hot fi <ul> <li> <a... </a> </li> <ul>
+   3: hot el (ul) display: flex  tatet7akam bel positioning of the child elements...
+   4: start styling the (li) and (a)...... 
+   5: tathot header 3al shmel hota position: absolute; bel nesbe lal container tkun...
+   6: zid hover effects 3al button w anchor element, w border-top effect yetla3 helo....
+
+*)
+   to do a neon button:
+   1: create a container
+   2: create a button inside
+   3: align it wen ma bdk, ( shi tsewe positioning lal container automatically el button will be positioned)
+
+   4: style el buttn( border, w fonts, w colors, background)
+   5: hot lal button position relative.
+   6: sta3mil el pseudo element  ::before 
+      hot juweto (
+ content='';(taykun empty) 
+ position:absolute; (tayfut juwet el button)
+ top:0; left:0;   (tayfut exactly juwet el button)
+ width:100%;
+ height:100%;  (hek bikun akhad el width and height of the button w fet fiya 3al add)
+ z-index:-1  ( taykun wara el button mahtout, to later on yaate effect w glow effect )
+ background-color:green; (background te3o);
+ filter: blur(0px); ( taykun el blur abaddan mambayan , w mafi glowing since blur is 0px);
+
+
+7: button:hover::before{
+                         filter:blur(20px); ( taybayin el glowing effect )
+                       }
+
+8: button:hover
+{
+     background-color:green;
+}
+
+ma tensa thot transitions tatet7akam bel timing :D
+
+*************************************************************************************************************************************************
+19 june:
+
+
+*)
+   background-position:center; ( btethakam bel soura kif tkun lama tsewe resizing lal browser)....
+
+*)
+    another way to position an element in the perfect center of the body:
+     
+      position: absolute; ( bisir mlaza2 3al shmel fo2 )...
+      top:50%;(binazela la tahet 3a noss el body, so sar bel middle left center)
+      left:50%; (bizeta 3a noss el total width, so sarit bel perfect center )
+      hoton:46%; ( for better precision aw thakam enta fiyon!
+
+ Sar aandk 2 ways to position items bel perfect centre of the body aw containers....
+
+*)
+    bel position:absolute; ( sah enno by default betkun mlaz2a 3al shmel, bas actually tate2dar testaamil effects 3laya metel el margin:auto; bdk tkun 3atiya mainly top,right,left,bottom:0; )
+
+margin: auto; ( short hand property it splits vertically and horizontally equally (vertical and horizontal centering) );
+
+
+*)
+   lamma tsewe rotate la element, using the transform:rotate()...
+   eza bdk tethakam men wen ten3amal el rotation, ya3ne el origin of the rotation.
+  hiye by default el centre el 3ade taba3 kel object ( transform-origin:50% 50%; perfect centre of an object))
+  
+   eza bdk fik tghayir el origin : ( transform-origin: bottom,top left,top right,top....... aw fik pourcentage X Y)
+
+*)
+ he background-clip property defines how far the background should extend within an element.
+
+
+*)
+   linear-gradient: ( red,yellow) hayde yaane el colors men tahet yellow w transitioning to red fo2
+   linear-gradient: (to right,red,yellow) hayde 3al yamin yellow 3al left red.
+   linear-gradient: (to bottom right , red, yellow) bottom right yellow.... w men baada red kel shi.
+   
+
+background-clip: border-box (this is default): 
+
+tathot mainly el background to extend as a text( web-kit-background-clip:text)
+*************************************************************************************************************************************************
+
+21 june:
+*)
+    The viewport is the user's visible area of a web page.
+
+The viewport varies with the device, and will be smaller on a mobile phone than on a computer screen.
+
+*)
+   lama yenhat bel meta tag el viewport=... hayde basically bethot ur content of the webpage to fit on the viewport on the tablets or phones widths
+
+*)
+   
+    just by adding more spaces to your design it makes your design more elivated...... 
+
+*)
+    https://digitalsynopsis.com/design/font-psychology-emotions/
+
+   great site to know what fonts to use and the mood they convey for users!!!!!
+
+TOP 4 fonts and the mood that they convey:
+
+Serif: Traditional,timeless,respectable,formal.
+Sans serif: Easy to read,straightforward, neutral.
+Slab serif: Impactful, Attentio grabbing.
+Modern Serif: Luxurious, high fashion.
+
+*)
+    Deyman align text to the axis betsir more readable:   ex: HELLO WORLD
+                                                              hahahahhaha
+                                                              avadacidavra
+
+*)
+    https://digitalsynopsis.com/design/best-google-font-combinations-typeface-pairings/
+    
+    great site for different fonts cmbinations for your project...
+
+*)
+    in user experience aham shi:
+     1: consistency : yaane eza el user bado yen2ol mnel home page lal about page.. T5ale nafs el design lal navigation w el background w hek in general. so the users do not get confused and needt to re learn your website.
+
+     2: reading patterns, usually people read with the F-pattern or Z-pattern :
+      so when designing a website use the F pattern layout or Z pattern layout.
+
+*)
+   UI:
+  1: hierarchy... so basically eza u are conveying a message, khale aham shi ykuno brighter aw gher color w el ba2we normal...
+     hek el users birakiz mnih 3a what is important...
+  2: white spaces to make something valuable
+ 
+  3: alignments of text....
+
+  4: targeting audiences.
+
+
+
+JSSSSSSSSSSSSSS:
+**********************
+
+
+
+*)
+    fik te sewe inspect element w trou7 3al console w tekto js codes hounik.w btekbos enter they will run...
+    kbos shift enter to right multiple lines js script codes in console.
+
+*)
+  tatektob js codes bel browser w ma yekhtefo even eza 3melet refresh, rou7 3al sources w hot new snippets w same el file li bdk yeh tkun .js extension, w ktob ur code, w sewe run. hek haydal r code msayav bi hal snippet even eza tsewa refresh...
+
+*)
+   use mozilla to get all the documentations about JS....
+
+*)
+   most important js data types:
+   1: number  (1,2,3);
+   2: string  ("hello world"); 
+   3: boolean (true,false); 
+   
+   
+  **********************************************************************************************************************************************
+
+22 june:
+
+*)
+   fik tektob js script codes inline.... example: <body onload="alert('helloWorld');>
+   Note: kton hello world one singe quote('helloWorld'); bisir more readable w byefham aktar.... la2an already kel shi within double quotes.
+
+*)
+   fik tekotb bel console : document; // u get the whole html code in the console.
+
+ *)
+    document.firstElementChild;   byaatik el html
+    document.firstElementChild.firstElementChild;   byaatik el head now since el firstElement huwe el html then el firstElementChild te3 el html huwe el head...
+
+*)
+    document.firstElementChild(html).lastElementChild(body la2an el last element child mnel html element); // body
+
+*)
+   a property ma3anda parentheses.
+   a function deyman 3anda parentheses.
+
+*)
+
+
+***********************************************************************************************************************************************
+
+
+24 june: 
+*)
+    background: background-color background-image background-repeat  // shorthand property lal background image
+            background-position-horizontal
+            [background-position-vertical]
+             background-attachment; // it means eza bdk el background to scroll aw tdal sebte maybayin shi....
+                                       fixed: betdala sebte, so eza nezil el user betdala sebte w byekhtefo part since am yenzal
+                                       scroll: byenzalo el osas li bel background ma3 el user, so ma bykhtefo w bidalon am yenzalo ma3o.
+
+*)
+   tat5ale el background image bel body responsive:
+
+      background:url('..') no-repeat center center fixed;
+      background-size: cover;
+      height:100%; (lal body hay)
+      overflow:hidden; ( hek eza shi toli3 barat el background maybayin); 
+
+  // aw fik thot background-position:center; badel ma thot center center el short hand property...
+
+  
+
+
+
+*)
+    height:100vh; // it means 100% of the view port height( user available area of the webpage)
+    height:100%;   // it means 100% of the parent element.....
+
+*)
+   to display an item in the ultimate center of a page using flex:
+     body{
+          display:flex;
+          justify-content:center;
+          align-items:center;
+          height:100vh; // 100% of the view port height,  so since akhada kella now el body haybayno bel ultimate center el items.
+          
+          NOTE: eza mabdk testaamil height:100vh; fik testa3mil:
+
+               html,body{ height:100%;} so basically li bisir lama yenhat html lheight te3o 100% bi male kel el saf7a mainly, w lamma yerja3 yenhat body lheight te3o 100%; he inherits hon el height taba3 el html document ( metel bel definition) 
+                          
+ ya3ne no way tle2e el items bel perfect center eza ma hatit html el height te3o 100%; se3eta libisir el body inherits el height taba3 el html element li huwe 0% so betle2e el item bel middle center fo2 which makes sense...... (html w body by default la2an el height te3on 0%)
+      
+
+   ********************************************************************************************************************************************
+
+
+26 june:
+**********
+
+*)
+    rem unit: it is relative to the font-size of the root element of the default browser; which is by default:16px;
+    
+      so: 1 rem=16px;
+          2rem= 2*16=32px;
+          3 rem= 48px;
+
+ 
+      
+      

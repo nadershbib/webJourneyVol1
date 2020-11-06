@@ -1,0 +1,48 @@
+*)
+    What is Postman? Postman is a popular API client that makes it easy for developers to create, share, test and document APIs. This is done by allowing users to create and save simple and complex HTTP/s requests, as well as read their responses. The result - more efficient and less tedious work.
+
+
+*)
+    How to create collection:
+
+collection: is a group of apis requests that can be stored and arranged in local arrangements
+
+Just press, create new collection in postman....
+
+
+
+*)
+   An API is an application programming interface. It is a set of rules that allow programs to talk to each other. The developer creates the API on the server and allows the client to talk to it.
+
+REST determines how the API looks like. It stands for “Representational State Transfer”. It is a set of rules that developers follow when they create their API. One of these rules states that you should be able to get a piece of data (called a resource) when you link to a specific URL.
+
+
+
+
+*)
+   How to create apis requests:
+
+  1:create mainly a a new request workplace in postman
+  2: go to reqres.in then go to single user then press request api url
+  3: then go to postman, enter the name of the request(get user) and save it to a collection in the bottom
+  4: put the api url in the postman collection that has the api request
+  5: then press send, and you will get the response...
+
+
+*)
+    To save the requests:
+ in the collection that has a request
+1:press save as
+2:enter name of request
+3: save to the collection
+
+
+
+*)
+   To add a header simply:
+
+1:go to headers section
+2: just add keys and values and description and press save
+
+
+   
